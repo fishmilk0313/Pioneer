@@ -1,0 +1,21 @@
+<div class ="container">
+	<div class ="row">
+		<div clss="col-xs-12">
+			<h2 class ="page-title text-center">カテゴリー編集</h2>
+			  <%= form_for @category, url: hosts_category_path,  method: :patch do |f| %>
+				  <div>
+				    ジャンル
+				      <%= f.text_field :name  %>
+				      <%= f.radio_button :is_active, true %>
+				      <%= f.label :is_active, "有効", {value: :true, style: "display: inline-block;"} %>
+				      <%= f.radio_button :is_active, false %>
+				      <%= f.label :is_active, "無効", {value: :false, style: "display: inline-block;"} %>
+				      <%= f.submit "変更を保存する", class: "btn btn-primary" %>
+				    </div>
+				  <% end %>
+				<br>
+				  <div class="col-xs-12">
+				    <%= link_to "戻る", hosts_categories_path, class: "glyphicon glyphicon-home btn btn-primary" %>
+				  </div>
+</div>
+

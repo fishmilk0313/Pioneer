@@ -1,0 +1,84 @@
+ <header>
+    <% if host_signed_in? %>
+      <!-- ホストのトップページへリンク -->
+      <%= link_to hosts_topic_path do %>
+        <h1 class ="headline">Pioneer</h1>
+        <% end %>
+    <% else %>
+      <%= link_to root_path do %>
+        <h1 class ="headline">Pioneer</h1>
+      <% end %>
+    <% end %>
+    <div class ="customer-name">
+        <p>ようこそ、<%current_user.name %>　様!</p>
+    </div>
+      <nav class ="nav-wrap">
+         <ul class="nav-list">
+          <li class="nav-list-item">
+            <% link_to "足跡一覧", users_posts_path %>
+          </li>
+          <li class="nav-list-item">
+            <% link_to "トピック一覧", users_topic_path(current_user) %>
+          </li>
+          <li class="nav-list-item">
+            <% link_to "ログアウト", destroy_users_session_path, method: :delete %>
+          </li>
+        </ul>
+      </nav>
+     <!--　ユーザーがログインしている時　-->
+    <% if user_signed_in? %>
+      <div class ="customer-name">
+        <p>ようこそ、<%current_user.name %>　様!</p>
+      </div>
+      <nav class ="nav-wrap">
+         <ul class="nav-list">
+          <li class="nav-list-item">
+            <% link_to "足跡一覧", users_posts_path %>
+          </li>
+          <li class="nav-list-item">
+            <% link_to "トピック一覧", users_topic_path(current_user) %>
+          </li>
+          <li class="nav-list-item">
+            <% link_to "ログアウト", destroy_users_session_path, method: :delete %>
+          </li>
+        </ul>
+      </nav>
+
+
+    <% elsif host_signed_in? %>
+      <nav class ="nav-wrap">
+        <ul class="nav-list">
+          <li class="nav-list-item">
+            <% link_to "マイページ", user_path(current_user) %> 
+          </li>
+          <li class="nav-list-item">
+            <% link_to "足跡一覧", users_posts_path %>
+          </li>
+          <li class="nav-list-item">
+            <% link_to "トピック一覧", users_topic_path(current_user) %>
+          </li>
+          <li class="nav-list-item">
+            <% link_to "ログアウト", destroy_userrs_session_path, method: :delete %>
+          </li>
+        </ul>
+      </nav>
+
+    <% else %>
+      <nav class ="nav-wrap">
+        <ul class="nav-list">
+          <li class="nav-list-item">
+           <% link_to "マイページ", user_path(current_user) %>
+          </li>
+          <li class="nav-list-item">
+            <% link_to "足跡一覧", users_posts_path %>
+          </li>
+          <li class="nav-list-item">
+            <% link_to "トピック一覧", users_topic_path(current_user) %>
+          </li>
+          <li class="nav-list-item">
+            <% link_to "ログアウト", destroy_users_session_path, method: :delete %>
+          </li>
+        </ul>
+      </nav>
+    <% end %>
+  </header><!-- /he

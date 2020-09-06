@@ -1,0 +1,29 @@
+<div class="backimage">
+  <div class="container">
+    <div class ="row login">
+      <div class ="login-body col-md-5">
+        <h2 class ="login-title">Pioneerへサインイン</h2>
+        <i class="fas fa-globe-asia fa-5x"></i>
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <div class ="field">
+              <%= f.label :email %></br>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email",size:50 %>
+            </div>
+
+            <div class="field">
+              <%= f.label :password %></br>
+              <%= f.password_field :password, autocomplete: "current-password", size:50 %>
+            </div>
+
+            <div class="actions">
+              <%= f.submit "Log in",class: "btn btn-success" %>
+            </div>
+
+            <div class="sign-link">
+          <p>登録がお済みでない方</p>
+          <%= link_to "こちら", new_registration_path(resource_name) %>から新規登録を行ってください
+          </div>
+          <% end %>
+      </div>
+    </div>
+  </div>
