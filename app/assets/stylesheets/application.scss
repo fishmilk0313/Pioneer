@@ -18,20 +18,29 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
  @import 'font-awesome-sprockets';
-@import 'font-awesome';
+ @import 'font-awesome';
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+body{
+  background-color: #edece6;
+}
 header {
   width: 100%;
   padding: 15px 0;
   margin: 0 auto;
   text-align: center;
+  heigth: 400px;
 }
-.header-flex{}
+.header-item{
+  display: flex;
+  justify-content: flex-end;
+  box-shadow: 1px 1px 5px 1px #999;
+}
+
 
 .nav-list {
   text-align: center;
@@ -44,7 +53,7 @@ header {
   margin: 0 20px;
 }
 .backimage{
-  background-image: image-url('login-back.jpg')
+  background-image: image-url('login-back.jpg');
 
 }
 .backimage:before{
@@ -56,6 +65,27 @@ header {
   right: -5px;
   bottom: -5px;
   left: -5px;
+}
+#container-fluid{
+  height: 500px;
+}
+.image1 {
+  background-image: image-url("slide.jpg");
+}
+.image2 {
+  background-image: image-url("slide2.jpg");
+}
+.image3 {
+  background-image: image-url("slide3.jpg");
+}
+.image4 {
+  background-image: image-url("slide4.jpg");
+}
+.image5 {
+  background-image: image-url("slide5.jpg");
+}
+.top-new-post{
+  margin-top: 70px;
 }
 .login{
 	display: flex;
@@ -72,8 +102,119 @@ header {
   padding-bottom: 30px;
 }
 .login-title{
-    margin-top: 15px;
+  margin-top: 15px;
 	padding-bottom: 30px;
+  margin-top: 30px;
+}
+.top-post{
+  width: 100%;
+  height: 80%;
+}
+.top-topic{
+  width: 100%;
+  height: 80%;
+}
+.top-post-item{
+  position: relative;
+  box-shadow: 0px 0px 0px 5px #999;
+  border: dashed 2px white;
+  padding: 0.2em 0.5em;
+  color: #454545;
+}
+.top-post-item::after{
+    position: absolute;
+    content: '';
+    right: -7px;
+    top: -7px;
+    border-width: 0 15px 15px 0;
+    border-style: solid;
+    border-color: #999 #999 #999;
+    box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.15);
+}
+.top-post-list{
+  display: flex;
+  padding: 25px 0 25px 0;
+  margin: 0 5px 0 5px;
+}
+.top-post-list > div {
+  width: 33%;
+}
+.top-topic-list{
+  display :flex;
+  flex-wrap: wrap;
+}
+.top-topic-list > div {
+  width: 25%;
+}
+.about-headline{
+  background-image: url(about.jpeg);
+  background-size: cover;
+  background-position: center;
+  height : 500px;
+  position: relative;
+  z-index: 0;
+  overflow: hidden
+}
+.about-image{
+  border-radius: 50%;
+  width: 400px;
+  height: 400px;
+}
+
+.about-text{
+  margin:2em 0;
+  position: relative;
+  padding: 0.25em 1em;
+  border: solid 2px #000;
+  border-radius: 3px 0 3px 0;
+}
+.about-text:nth-child(odd):before,.about-text:nth-child(even):after{
+    content: '';
+    position: absolute;
+    width:10px;
+    height: 10px;
+    border: solid 2px #000;
+    border-radius: 50%;
+}
+.about-text:after {
+  top: 154px;
+  left:-12px;
+}
+.about-text:before {
+  bottom:-12px;
+  right:-12px;
+
+}
+.profile-image{
+  border-radius: 50%;
+  padding-right: 5px;
+}
+.about-headline:before{
+  content: '';
+  background: inherit;/*.bgImageで設定した背景画像を継承する*/
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+  position: absolute;
+  /*ブラー効果で画像の端がボヤけた分だけ位置を調整*/
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  z-index: -1;/*重なり順序を一番下にしておく*/
+}
+.top-headline h1 {
+   margin: 240px 0 200px;
+  text-align: center;
+  font-family: 'Cinzel', serif;
+  font-size: 34px;
+  color: #fff;
+  text-shadow: 0 0 10px rgba(0,0,0,.4);
+}
+footer{
+  background-color: #CCCCCC;
   margin-top: 30px;
 }
 

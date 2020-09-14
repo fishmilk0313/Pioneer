@@ -1,31 +1,46 @@
 class Users::UsersController < ApplicationController
-	
-	def show
-		@user = User.find(params[:id])
-	end
+  def show
+    @user = User.find(params[:id])
+  end
 
-	def edit 
-		@user = User.find(params[:id])
-		@user = current_user
-	end
+  def edit
+    @user = User.find(params[:id])
+    @user = current_user
+  end
 
-	def update
-		@user = User.find(params[:id])
-		if @user.update(user_params)
-			redirect_to user_path(@user.id)
-		else
-			render 'edit'
-		end
-	end
+  def update
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      redirect_to user_path(@user.id)
+    else
+      render 'edit'
+    end
+  end
 
-	def destroy 
-		@user = User.find(params[:id])
-		@user.destroy(user_params)
-		redirect_to new_user_registraton_path
-	end
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy(user_params)
+    redirect_to new_user_registraton_path
+    render 'show_follow'
+  end
 
-	private
-	def user_params
-		params.require(:user).permit(:name, :profile_image_id, :introduction, :email)
-	end
+  def following
+    @user = User.find(params[:id])
+    @users = @user.followings
+    render 'show_follow'
+  end
+
+  def hide
+    @user = User.find(params[:id])
+    @user.update(is_deleted: true)
+    reset_session
+    flash[:notice] = "またのご利用をお待ちしております。"
+    redirect_to root_path
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:name, :profile_image, :introduction, :email)
+  end
 end

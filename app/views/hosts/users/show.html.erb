@@ -1,0 +1,22 @@
+<div class ="container-fluid">
+	<div class ="row">
+		<h1 class ="col-xs-12 text-center">My profile</h1>
+		<div class ="col-xs-3 col-xs-offset-1">
+			<%= render '/users/users/profile', {user: @user} %>
+			 <%= form_with model: @user, local: true, url: hosts_user_path(@user.id), method: :patch  do |f| %>
+ 				<div class="checkbox">
+                   <%= f.radio_button :is_deleted, :false %>
+                   <%= f.label :is_deleted,"有効",{value: :true, style: "display :inline-block;",} %>
+                   <%= f.radio_button :is_deleted, :true %>
+                   <%= f.label :is_deleted,"退会済み", {value: :false, style: "display :inline-block;"} %>
+                   <%= f.submit "更新", class: "btn btn-primary"  %>
+				</div>
+				<% end %>
+			</div>
+
+		<div class ="col-xs-8">
+			<h2>投稿一覧</h2>
+			<%= render 'users/posts/post_index', {posts: @user.posts } %>
+		</div>
+	</div>
+</div>

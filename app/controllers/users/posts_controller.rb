@@ -1,5 +1,5 @@
 class Users::PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_categories, only: [:new, :edit, :index, :create, :update]
 
   # GET /posts
   # GET /posts.json
@@ -10,6 +10,8 @@ class Users::PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
+    @post = Post.find(params[:id])
+    @comment = Comment.new
   end
 
   # GET /posts/new
@@ -25,15 +27,11 @@ class Users::PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(post_params)
-
-    respond_to do |format|
-      if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
-        format.json { render :show, status: :created, location: @post }
-      else
-        format.html { render :new }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
+    @post.user_id = current_user.id
+    if @post.save!
+      redirect_to users_posts_path
+    else
+      render :new
     end
   end
 
@@ -62,13 +60,12 @@ class Users::PostsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_post
-      @post = Post.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def post_params
-      params.fetch(:post, {})
-    end
+  def set_categories
+    @categories = Category.where(is_active: true)
+  end
+
+  def post_params
+    params.require(:post).permit(:user_id, :category_id, :title, :text, :image)
+ end
 end

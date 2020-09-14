@@ -1,22 +1,52 @@
-<p id="notice"><%= notice %></p>
+<div class ="container">
+  <div class ="row">
+    <div class ="page-title text-center">
+      <h2><storong>Topics</storong>
+        <!--　カテゴリーのタグ検索　　-->
+      </h2>
+    </div>
 
-<h1>Topics</h1>
+    <div class ="topic-list col-xs-8">
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+      <%=link_to users_topic_path(@topic[0]) do %>
+        <div class ="new-topic col-xs-12">
+          <div class ="new-topic-image col-xs-6 text-center">
+           <%= attachment_image_tag(@topic[0], :image, class: "big-topic-image") %>
+          </div>
+          <div class ="new-topic-time col-xs-3">
+            <p><%= @topic[0].created_at.strftime('%Y/%m/%d/%R') %></p>
+          </div>
+          <div class ="new-topic-title col-xs-5 text-center">
+           <h3><%= @topic[0].title %></h3>
+          </div>
+        </div>
+      <% end %>
+     
+      <% @topics.each do |topic| %>
+        <%=link_to users_topic_path(topic) do %>
+          <div class ="topic-list-body  col-xs-12">
+            <div class ="topic-head col-xs-12">
+              <div class ="topic-time col-xs-2">
+                <p><%= topic.created_at.strftime('%Y/%m/%d/%R') %></p>
+              </div>
+              <div class ="topic-category col-xs-offset-8 col-xs-2">
+                <P><%= topic.category.name %></P>
+              </div>
+            </div>
 
-  <tbody>
-    <% @topics.each do |topic| %>
-      <tr>
-        <td><%= link_to 'Show', topic %></td>
-        <td><%= link_to 'Edit', edit_topic_path(topic) %></td>
-        <td><%= link_to 'Destroy', topic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+            <div class ="topic-title text-center col-xs-9">
+              <h3><%= topic.title %></h3>
+            </div>
+            <div class ="topic-image text-right col-xs-3">
+              <%= attachment_image_tag(topic, :image, class: "topic-list-image") %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+
 

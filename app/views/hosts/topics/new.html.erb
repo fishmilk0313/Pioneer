@@ -1,49 +1,36 @@
 <div class ="container">
 	<div class ="row">
-		<h2 class ="page-title text-center">トピック新規投稿</h2>
+		<div class ="create-topics col-xs-offset-3 col-xs-6 text-center">
+			<div class ="create-topics-headline">
+				<h2 class ="page-title text-center">トピック新規投稿</h2>
+			</div>
 		<%= form_for(@topic, url: hosts_topics_path, method: :post)do |f| %>
-			<div class ="col-sm-12">
-				<div class ="img_field text-center">
-			 		<%=  attachment_image_tag(@topic, :image, fallback: "no-image.png", size:"400x300") %>
+				<div class ="container-fluid create-topic-image text-center">
+			 		<%=  attachment_image_tag(@topic, :image, fallback: "no-image.png",style: "width: 100%; height: 100%;") %>
 		 	 	</div>
-		 		<div class ="col-sm-6">
+		 		<div class ="select-image col-xs-6">
 		 			<%= f.attachment_field :image %>
 				</div>
-				<div class ="col-sm-6 text-right">
+
+		 	<div class ="field col-xs-12">
+		 		<%= f.label :"タイトル" %></br>
+		 		<%= f.text_field :title, class: "form-control"  %>
+		 	</div>
+
+			<div class ="field body col-xs-12">
+			 	<%= f.label :"本文" %></br>
+		 		<%= f.text_area :text, class: "form-control",size: "20x10" %>
+		 	</div>
+		 	<div class ="col-xs-12 text-right">
 					<%= f.label :"ジャンル" %>
  					<%= f.collection_select(:category_id, @categories, :id, :name, prompt: "-- 選択してください --") %>
- 				</div>
- 		 	</div>
+ 			</div>
 
-		 	<div class ="field col-sm-12">
-		 		<%= f.label :"タイトル" %></br>
-		 		<%= f.text_field :title, size: 100 %>
-		 	</div>
-
-			<div class ="field body col-sm-12">
-			 	<%= f.label :"本文" %></br>
-		 		<%= f.text_field :text %>
-		 	</div>
-
-			<div class ="actions col-sm-2">
-		 		<%= f.submit "新規投稿" %>
+			<div class ="actions col-xs-12">
+		 		<%= f.submit "新規投稿", class: "btn-block btn-primary" %>
 		 	</div>
 		 <% end %>
 		</div>
 	</div>
+	</div>
 </div>
-
-<script>
-  $(function(){
-    $('#"img_field').on('change', function (e) {
-      var reader = new FileReader();
-      reader.onload = function (e) {
-        $(".image").attr('src', e.target.result);
-      }
-      reader.readAsDataURL(e.target.files[0]); //取得したurlにアップロード画像のurlを挿入
-	});
-  });
-</script>
-
-
-		

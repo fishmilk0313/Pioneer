@@ -1,7 +1,5 @@
 class Topic < ApplicationRecord
+  attachment :image
 
-	 attachment :image
-
-	 belongs_to :category
-
+  belongs_to :category
 end

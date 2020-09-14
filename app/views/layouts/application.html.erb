@@ -10,78 +10,66 @@
   </head>
 
   <header>
-    <div class ="header-title">
-      <nav>
-        <% if host_signed_in? %>
-          <!-- ホストのトップページへリンク -->
-          <%= link_to hosts_topics_path do %>
-            <h1 class ="headline">Pioneer</h1>
-            <% end %>
-        <% else %>
-          <%= link_to root_path do %>
-            <h1 class ="headline">Pioneer</h1>
-          <% end %>
-        <% end %>
-      </nav>
+    <div class ="header-headline">
+            <h1>Pioneer</h1>
     </div>
          <!--　ユーザーがログインしている時　-->
-    <div class ="header_flex">
         <% if user_signed_in? %>
-          <div class ="customer-name">
-            <p>ようこそ、<%current_user.name %>　様!</p>
-          </div>
-          <nav class ="nav-wrap">
-             <ul class="nav-list">
-              <li class="nav-list-item">
-                <%= link_to "足跡一覧", users_posts_path %>
-              </li>
-              <li class="nav-list-item">
-                <%= link_to "トピック一覧", users_topic_path(current_user) %>
-              </li>
-              <li class="nav-list-item">
-                <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-              </li>
-            </ul>
-          </nav>
+      <div class ="header-item">
+        <nav>
+          <ul class ="nav-list">
+            <!-- 投稿する -->
+            <li class ="nav-list-item">
+              <%= link_to new_users_post_path do %>
+              <i class="fas fa-plus-square fa-2x"></i>
+              <% end %>
+            </li>
+         <!-- ログアウト　-->
+          <li class="nav-list-item">
+                <%= link_to destroy_user_session_path, method: :delete do %>
+                <i class="fas fa-sign-out-alt fa-2x"></i>
+                <% end %>
+          </li>
+          <li class = "nav-list-item">
+            <!-- プロフィール　-->
+             <div class ="customer-name">
+            <%= attachment_image_tag @user, :profile_image, fallback: "no-image.png",  style: "width: 50px; height: 40px;",class:"profile-image" %><%= current_user.name %>
+            </div>
+          </li>
+        </ul>
+      </nav>
 
 
         <% elsif host_signed_in? %>
-          <nav class ="nav-wrap">
-            <ul class="nav-list">
+
+             <li class ="nav-list-item">
+               <%= link_to new_hosts_topics_path do %>
+                <i class="fas fa-plus-square fa-3x"></i>
+               <% end %>
+            </li>
+
+              <!-- ログアウト　-->
               <li class="nav-list-item">
-                <%= link_to "足跡一覧", users_posts_path %>
-              </li>
-              <li class="nav-list-item">
-                <%= link_to "トピック一覧", hosts_topics_path %>
-                <li class="nav-list-item">
-                  <%= link_to "カテゴリー一覧", hosts_categories_path %>
-              </li>
-              <li class="nav-list-item">
-                <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+                <%= link_to destroy_host_session_path, method: :delete do %>
+                <i class="fas fa-sign-out-alt"></i> %>
+                <% end %>
               </li>
             </ul>
           </nav>
 
         <% else %>
-          <nav class ="nav-wrap">
-            <ul class="nav-list">
+              <!-- 新規登録 -->
               <li class="nav-list-item">
-               <%= link_to "About", homes_about_path %>
+                <%= link_to new_user_registration_path do %>
+                <i class="fas fa-user-plus"></i>
               </li>
+              <% end %>
+              <!-- ログイン　-->
               <li class="nav-list-item">
-                <%= link_to "足跡一覧", users_posts_path %>
+                <%= link_to new_user_session_path  do %>
+                <i class="fas fa-sign-in-alt"></i>
+                <% end %>
               </li>
-              <li class="nav-list-item">
-                <%= link_to "トピック一覧", users_topics_path(current_user) %>
-              </li>
-              <li class="nav-list-item">
-                <%= link_to "新規登録", new_user_registration_path  %>
-              </li>
-              <li class="nav-list-item">
-                <%= link_to "ログイン", new_user_session_path %>
-              </li>
-            </ul>
-          </nav>
         <% end %>
       </div>
     </div>
@@ -90,4 +78,32 @@
   <body>
     <%= yield %>
   </body>
+
+  <footer>
+    <nav class ="nav-wrap">
+      <ul class="nav-list">
+    <li class ="nav-list-item">
+        <%= link_to "Home", root_path %>
+    </li>
+
+     <li class="nav-list-item">
+        <%= link_to "About", homes_about_path %>
+    </li>
+    <li class="nav-list-item">
+        <%= link_to "Timeline", users_posts_path %>
+    </li>
+    <li class="nav-list-item">
+        <%= link_to "Topic", users_topics_path(current_user) %>
+    </li>
+
+    <li class ="nav-list-item">
+        <%= link_to "contact", new_contact_path %>
+    </li>
+  </ul>
+   </nav>
+   <p class ="text-center">© All rights reserved by dmmwebcamp.</p>
+
+ </footer>
+
+
 </html>

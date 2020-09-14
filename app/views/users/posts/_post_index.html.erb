@@ -1,0 +1,40 @@
+ <% posts.each do |post| %>
+        <div class ="post-frame  col-xs-6">
+           <div class ="post-user col-xs-offset-1 col-xs-11">
+         
+           <%= attachment_image_tag post.user, :profile_image, fallback: "no-image.png", style: "width: 50px; height: 50px;",class:"profile-image" %>
+           <%= post.user.name %></br>
+          </div>
+          <%= link_to users_post_path(post) do %>
+            <div class ="post-image-frame text-center">
+               <%= attachment_image_tag(post, :image, fallback: "no-image.png", class: "post-image") %>
+            </div>
+          <% end %>
+            <div class ="post-list-title col-xs-6">
+              <h3><%= post.title %></h3>
+            </div>
+            <div class ="col-xs-6 text-right">
+              <h4><%= post.category.name %></h4>
+            </div>
+           
+            <div class="post-list-text col-xs-12">
+              <P><%= post.text %></P>
+            </div>
+                         <div class ="col-xs-12 text-right">
+               <% if post.favorited_by?(current_user) %>
+                <%= link_to post_favorites_path(post), method: :delete do %>
+                  <i class="far fa-heart" aria-hidden="true" style="color: red;"></i>
+                <% end %>
+                <%= post.favorites.count %> いいね
+            <% else %>
+              <%= link_to post_favorites_path(post), method: :post do %>
+                <i class="far fa-heart" aria-hidden="true"></i>
+                <% end %>
+                <%= post.favorites.count %> いいね
+              <% end %>
+                <%= post.comments.count %>件コメント
+          </div>
+
+        </div>
+       
+        <% end %>

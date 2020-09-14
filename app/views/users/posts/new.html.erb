@@ -1,5 +1,33 @@
-<h1>New Post</h1>
+<div class ="container">
+	<div class ="row">
+		<div class ="create-topics col-xs-offset-3 col-xs-6 text-center">
+		<div class ="page-title text-center">
+      		<h2><storong>足跡を記す</storong></h2>
+    	</div>
+    		<%= form_for(@post, url: users_posts_path, method: :post)do |f| %>
+    			<div class ="new-post-image col-xs-12">
+    					<%= attachment_image_tag(@topic, :image, fallback: "no-image.png", class:"new-image") %>
+		 			<%= f.attachment_field :image %>
+				</div>
 
-<%= render 'form', post: @post %>
+    			<div class ="field col-xs-12">
+		 		<%= f.label :"タイトル" %></br>
+		 		<%= f.text_field :title, class: "form-control"  %>
+		 	</div>
 
-<%= link_to 'Back', posts_path %>
+			<div class ="field body col-xs-12">
+			 	<%= f.label :"本文" %></br>
+		 		<%= f.text_area :text, class: "form-control",size: "20x10" %>
+		 	</div>
+		 	<div class ="col-xs-12 text-right">
+					<%= f.label :"ジャンル" %>
+ 					<%= f.collection_select(:category_id, @categories, :id, :name, prompt: "-- 選択してください --") %>
+ 			</div>
+
+			<div class ="actions col-xs-12">
+		 		<%= f.submit "新規投稿", class: "btn-block btn-primary" %>
+		 	</div>
+			 <% end %>
+			</div>
+		</div>
+	</div>

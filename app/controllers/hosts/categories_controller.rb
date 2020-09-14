@@ -29,11 +29,10 @@ class Hosts::CategoriesController < ApplicationController
     if @category.save
       redirect_to hosts_categories_path
     else
-      @categories =Category.all
+      @categories = Category.all
       render(:index)
     end
   end
-
 
   # PATCH/PUT /categories/1
   # PATCH/PUT /categories/1.json
@@ -43,25 +42,24 @@ class Hosts::CategoriesController < ApplicationController
     redirect_to hosts_categories_path
     if @category.is_active == false
       @category.posts.each do |post|
-        post.is_active = false 
+        post.is_active = false
         post.save
       end
-       @category.topics.each do |topic|
-        topic.is_active = false 
+      @category.topics.each do |topic|
+        topic.is_active = false
         topic.save
       end
     else @category.is_active == true
-      @category.posts.each do |post|
-        post.is_active = true
-        post.save
-      end
-       @category.topics.each do |topic|
-        topic.is_active = true
-        topic.save
-      end
+         @category.posts.each do |post|
+           post.is_active = true
+           post.save
+         end
+         @category.topics.each do |topic|
+           topic.is_active = true
+           topic.save
+         end
     end
   end
-
 
   # DELETE /categories/1
   # DELETE /categories/1.json
@@ -74,13 +72,14 @@ class Hosts::CategoriesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_category
-      @category = Category.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def category_params
-      params.require(:category).permit(:name, :is_active)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_category
+    @category = Category.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def category_params
+    params.require(:category).permit(:name, :is_active)
+  end
 end

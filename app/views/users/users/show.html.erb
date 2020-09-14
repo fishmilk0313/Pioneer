@@ -1,0 +1,13 @@
+<div class ="container-fluid">
+	<div class ="row">
+		<h1 class ="col-xs-12 text-center">My profile</h1>
+		<div class ="col-xs-3 col-xs-offset-1">
+			<%= render '/users/users/profile', {user: @user} %>
+		</div>
+
+		<div class ="col-xs-8">
+			<h2>投稿一覧</h2>
+			<%= render 'users/posts/post_index', {posts: @user.posts } %>
+		</div>
+	</div>
+</div>

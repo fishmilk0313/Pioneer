@@ -1,0 +1,51 @@
+<div class ="container">
+	<div class ="row">
+		<div class ="col-xs-offset-4 col-xs-4 text-center">
+			<h2 class ="page-title text-center">
+				<%= @user.name %>様の会員編集
+			</h2>
+			<div class ="user-edit">
+				<%= form_for(@user) do |f| %>
+					<div class ="form-group">
+						<%= f.text_field :name, autofocus: true, class:"form-control", placeholder: "name" %>
+					</div>
+					<div class="form-group">
+                    	 <%= f.text_field :email,class:"form-control",placeholder: "name" %>
+                    </div>
+
+                    <div class ="form-group">
+                    	<div class ="user-edit-image">
+                    		<%= attachment_image_tag @user, :profile_image, fallback: "no-image.png" class:"profile-image" %>
+                    	</div>
+                    		<%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %>
+                    </div>
+
+                    <div class ="form-group">
+                    	<%= f.text_field :introduction,class:"form-control" %>
+                    </div>
+                     <%= f.submit "変更を保存", class:"btn btn-lg btn-block btn-base-1 mt-20" %>
+                <% end %>
+                	<% if user_signed_in? && @user.id == current_user.id %>
+                	<%= link_to "退会", users_hide_path(current_user), method: :put, "data-confirm" => "本当に退会しますか？", class: "btn btn-outline-danger" %>
+                	<% end %>
+
+            </div>
+         </div>
+    </div>
+</div>
+
+<script>
+$(function(){
+    // inputのidから情報の取得
+    $('#user-edit-image').on('change', function (e) {
+// ここから既存の画像のurlの取得
+    var reader = new FileReader();
+    reader.onload = function (e) {
+        $(".image").attr('src', e.target.result);
+    }
+// ここまで
+    reader.readAsDataURL(e.target.files[0]); //取得したurlにアップロード画像のurlを挿入
+});
+});
+
+</script>

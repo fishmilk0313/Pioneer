@@ -17,7 +17,7 @@ class TopicsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create topic" do
     assert_difference('Topic.count') do
-      post topics_url, params: { topic: {  } }
+      post topics_url, params: { topic: {} }
     end
 
     assert_redirected_to topic_url(Topic.last)
@@ -34,7 +34,7 @@ class TopicsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update topic" do
-    patch topic_url(@topic), params: { topic: {  } }
+    patch topic_url(@topic), params: { topic: {} }
     assert_redirected_to topic_url(@topic)
   end
 
