@@ -1,0 +1,8 @@
+<%= form_with(model: [post, comment], url: post_comments_path(@post) ) do |f| %>
+		<%= f.label :"コメントを書き込む" %>
+		<%= f.text_area :comment,class: "form-control" %>
+	    <div class ="action col-xs-6">
+			<%= f.submit "送信する", class: "btn-block btn-primary" %>
+		</div>
+	</div>
+<% end %>
