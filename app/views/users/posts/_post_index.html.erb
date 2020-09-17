@@ -20,20 +20,13 @@
             <div class="post-list-text col-xs-12">
               <P><%= post.text %></P>
             </div>
-                         <div class ="col-xs-12 text-right">
-               <% if post.favorited_by?(current_user) %>
-                <%= link_to post_favorites_path(post), method: :delete do %>
-                  <i class="far fa-heart" aria-hidden="true" style="color: red;"></i>
-                <% end %>
-                <%= post.favorites.count %> いいね
-            <% else %>
-              <%= link_to post_favorites_path(post), method: :post do %>
-                <i class="far fa-heart" aria-hidden="true"></i>
-                <% end %>
-                <%= post.favorites.count %> いいね
-              <% end %>
+
+            <div class ="col-xs-offset-5 col-xs-3 text-right" id ="favorites_buttons_<%= post.id%>">
+               <%= render  'users/posts/favorite', post: post %>
+             </div>
+             <div class ="col-xs-4 text-right">
                 <%= post.comments.count %>件コメント
-          </div>
+            </div>
 
         </div>
        

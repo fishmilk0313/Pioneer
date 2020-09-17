@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'rooms/show'
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   resources :contacts
   root 'homes#top'
@@ -30,10 +31,15 @@ Rails.application.routes.draw do
       end
     end
     resources :relationships, only: [:create, :destroy]
-    # resources :notifications, only: :index
+    resources :notifications, only: [:index, :destroy]
+    
+
 
     put "/:id/hide" => "users#hide", as: 'users_hide'
   end
+  resources :messages, only: [:create]
+  resources :rooms, only: [:create, :show, :index]
+
 
   resources :posts, only: [:create, :destroy] do
     resource :favorites, only: [:create, :destroy]

@@ -1,4 +1,4 @@
-class NotificationsController < ApplicationController
+class Users::NotificationsController < ApplicationController
   def index
     # current_userの投稿に紐づいた通知一覧
     @notifications = current_user.passive_notifications
@@ -6,9 +6,9 @@ class NotificationsController < ApplicationController
     @notifications.where(checked: false).each do |notification|
       notification.update_attributes(checked: true)
     end
-    end
+  end
 
-  def destroy_all
+  def destroy
     # 通知を全削除
     @notifications = current_user.passive_notifications.destroy_all
     redirect_to users_notifications_path

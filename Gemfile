@@ -70,6 +70,7 @@ gem 'ransack'
 gem 'kaminari', '~> 1.2.1'
 gem 'font-awesome-sass', '~> 5.4.1'
 gem 'rubocop-airbnb'
+gem 'jquery-turbolinks'
 
 gem 'dotenv-rails'
 group :production do

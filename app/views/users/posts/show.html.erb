@@ -22,18 +22,8 @@
               <P><%= @post.text %></P>
             </div>
 
-            <div class ="col-xs-offset-6 col-xs-4 text-right">
-				<% if @post.favorited_by?(current_user) %>
-			 		 <%= link_to post_favorites_path(@post), method: :delete do %>
-			    		<i class="far fa-heart" aria-hidden="true" style="color: red;"></i>
-			   		 <%= @post.favorites.count %> いいね
-			  		 <% end %>
-				<% else %>
-			  		 <%= link_to post_favorites_path(@post), method: :post do %>
-			   			 <i class="far fa-heart" aria-hidden="true"></i>
-			   		 <%= @post.favorites.count %> いいね
-				 	<% end %>
-				<% end %>
+            <div class ="col-xs-offset-8 col-xs-4 text-right" id ="favorites_buttons_<%= @post.id%>">
+				<%= render  'users/posts/favorite', post: @post %>
 			</div>
 			<div class ="col-xs-2 text-right">
 				<% if @post.user.id == current_user.id %>
@@ -42,6 +32,7 @@
 					<% end %>
 				<% end %>
 			</div>
+			
 
 			<% if user_signed_in? %>
 		     <!-- コメント入力欄をブログの詳細ページに表示するためのrender -->

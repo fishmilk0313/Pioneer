@@ -1,15 +1,19 @@
 class FavoritesController < ApplicationController
   def create
-    post = Post.find(params[:post_id])
-    favorite = current_user.favorites.new(post_id: post.id)
+    @post = Post.find(params[:post_id])
+    favorite = @post.favorites.new(user_id: current_user.id)
     favorite.save
-    redirect_to users_post_path(post)
+    @post.create_notification_by(current_user)
+    respond_to do |format|
+      format.html { redirect_back(fallback_location: root_url) }
+      format.js
+    end
+
   end
 
   def destroy
-    post = Post.find(params[:post_id])
-    favorite = current_user.favorites.find_by(post_id: post.id)
+    @post = Post.find(params[:post_id])
+    favorite = current_user.favorites.find_by(post_id: @post.id)
     favorite.destroy
-    redirect_to users_post_path(post)
   end
 end

@@ -1,0 +1,21 @@
+<div class ="container">
+	<div class ="row">
+		<h1 class="users-heading">メッセージ一覧</h1>
+		<div class="dm_list">
+		  <% @rooms.each do |room| %>
+		    <div class="dm_list__content">
+		      <%= link_to room_path(room), class: "dmlist_content_link" do %>
+		        <div class="dmlist_content_linkbox">
+		          <h3 class="dmlist_content_linkbox_name">
+		            <%= opponent_user(room) %>
+		          </h3>
+		          <p class="dmlist_content_linkbox_message">
+		            <%= most_new_message_preview(room) %>
+		          </p>
+		        </div>
+		      <% end %>
+		    </div>
+		  <% end %>
+		</div>
+	</div>
+</div>
