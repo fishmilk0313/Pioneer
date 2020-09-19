@@ -24,30 +24,10 @@
         </div>
       </div>
       <% end %>
+       <%= render 'hosts/topics/topic_index', {topics: @topics} %>
+       <%= paginate @topics %>
      
-      <div class ="topic-list">
-        <% @topics.each do |topic| %>
-          <%=link_to hosts_topic_path(topic) do %>
-            <div class ="topic-list-body  col-xs-12">
-              <div class ="topic-head col-xs-12">
-                <div class ="topic-time col-xs-2">
-                  <p><%= topic.created_at.strftime('%Y/%m/%d/%R') %></p>
-                </div>
-              <div class ="topic-category col-xs-offset-8 col-xs-2">
-                <P><%= topic.category.name %></P>
-              </div>
-            </div>
-
-            <div class ="topic-title text-center col-xs-9">
-              <h3><%= topic.title %></h3>
-            </div>
-            <div class ="topic-image text-right col-xs-3">
-              <%= attachment_image_tag(topic, :image, class: "topic-list-image") %>
-            </div>
-            </div>
-          <% end %>
-        <% end %>
-        </div>
+       </div>
       </div>
   </div>
 </div>

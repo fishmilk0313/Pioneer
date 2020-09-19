@@ -44,4 +44,18 @@ class Post < ApplicationRecord
         end
         notification.save if notification.valid?
     end
+
+     def self.word_find(find,word)
+      if find == "forward_match"
+        @post = Post.where("title LIKE?","#{word}%")
+      elsif find == "backward_match"
+        @post = Post.where("title LIKE?","%#{word}")
+      elsif find == "perfect_match"
+        @post = Post.where("#{word}")
+      elsif find == "partial_match"
+         @post = Post.where("title LIKE?","%#{word}%")
+      else
+         @post = Post.all
+      end
+    end
 end

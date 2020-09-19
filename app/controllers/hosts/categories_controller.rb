@@ -1,11 +1,12 @@
 class Hosts::CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_host!
 
   # GET /categories
   # GET /categories.json
   def index
     @category = Category.new
-    @categories = Category.all
+    @categories = Category.page(params[:page]).per(10)
   end
 
   # GET /categories/1

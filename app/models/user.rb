@@ -51,6 +51,20 @@ class User < ApplicationRecord
       notification.save if notification.valid?
     end
   end
+  #検索バー
+  def self.word_find(find,word)
+    if find == "forward_match"
+      @user = User.where("name LIKE?","#{word}%")
+    elsif find == "backward_match"
+      @user = User.where("name LIKE?","%#{word}")
+    elsif find == "perfect_match"
+  　　@user = User.where("#{word}")
+    elsif find == "partial_match"
+    　@user = User.where("name LIKE?","%#{word}%")
+    else
+ 　　　@user = User.all
+    end
+  end
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable

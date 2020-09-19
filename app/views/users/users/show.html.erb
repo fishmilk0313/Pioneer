@@ -8,6 +8,29 @@
 		<div class ="col-xs-8">
 			<h2>投稿一覧</h2>
 			<%= render 'users/posts/post_index', {posts: @user.posts } %>
+			<%if user.id == current_user.id %>
+		<%= link_to edit_users_user_path(current_user.id) do %>
+			<button type="button" class="btn btn-default btn-block"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+			</button>
+		<% end %>
+	<% else %>
+		<div>
+			<% if @user.id == current_user.id %>
+				    <%= @msg %>
+				<% else %>
+				    <% if @is_room == true %>
+				        <p><%= link_to 'DMへ', room_path(@room_id) %></p>
+				    <% else %>
+				        <%= form_for @room do |f| %>
+				            <%= fields_for @entry do |e|%>
+				                <% e.hidden_field :user_id, value: @user.id %>
+				            <% end %>
+				        <%= f.submit "DMを開始する"%>
+				        <% end %>
+				    <% end %>
+				<% end %>
+			</div>
+	<% end %>
 		</div>
 	</div>
 </div>

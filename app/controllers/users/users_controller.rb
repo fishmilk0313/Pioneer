@@ -1,4 +1,7 @@
 class Users::UsersController < ApplicationController
+  before_action :authenticate_user!
+
+
   def show
     @user = User.find(params[:id])
     @currentuser_entry=Entry.where(user_id: current_user.id)

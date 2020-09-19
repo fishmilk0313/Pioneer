@@ -5,69 +5,65 @@
 		<tbody>
 		<table class="table">
 			<tbody>
-			<tr>
-				<td>name</td>
-				<td> <%= user.name %></td>
-			</tr>
-			<tr>
-				<td>intrduction</td>
-			</tr>
+				<tr>
+					<td>name</td>
+					<td> <%= user.name %></td>
+				</tr>
+				<tr>
+					<td>intrduction</td>
+				</tr>
 
-			<tr>
-			<td colspan="2"><%= user.introduction %></td>
-			</tr>
+				<tr>
+				<td colspan="2"><%= user.introduction %></td>
+				</tr>
 
-			<tr>
-				<td>following</td>
+				<tr>
+					<td>following</td>
+					<td><% user ||= current_user %>
+					  <div class="stats">
+					   <%= link_to following_users_user_path(user) do%>
+				    <strong id="following" class="stat">
+					     <%= user.followings.count %>
+					 </strong>
+					 <% end %>
+					   </div>
+	          		</td>
+	          	</tr>
+	          	<tr>
+	          	    <td id ="followers">followers</td>
 				<td><% user ||= current_user %>
 				  <div class="stats">
-				   <%= link_to following_users_user_path(user) do%>
-			    <strong id="following" class="stat">
-				     <%= user.followings.count %>
-				 </strong>
-				 <% end %>
+				   <%= link_to followers_users_user_path(user) do%>
+				    <strong id="followers" class="stat">
+					     <%= user.followers.count %>
+					 </strong>
+					 <% end %>
 				   </div>
-          		</td>
-          	</tr>
-          	<tr>
-          	    <td id ="followers">followers</td>
-			<td><% user ||= current_user %>
-			  <div class="stats">
-			   <%= link_to followers_users_user_path(user) do%>
-			    <strong id="followers" class="stat">
-				     <%= user.followers.count %>
-				 </strong>
-				 <% end %>
-			   </div>
-			</td>
-			</tr>
-			<td id="follow_form">
-				<%= render "follow_form" %>
-			</td>
-		</tbody>
-	</table>
-		
-	<%if user.id == current_user.id %>
-		<%= link_to edit_users_user_path(current_user.id) do %>
-			<button type="button" class="btn btn-default btn-block"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
-			</button>
+				</td>
+				</tr>
+		<% if user_signed_in? %>
+				<td id="follow_form">
+					<%= render "users/users/follow_form" %>
+				</td>
+			</tbody>
+		</table>
+		<% elsif host_signed_in? %>
+			</tbody>
+		</table>
+		<%= form_with model: @user, local: true, url: hosts_user_path(@user.id), method: :patch  do |f| %>
+ 				<div class="checkbox">
+                   <%= f.radio_button :is_deleted, :false %>
+                   <%= f.label :is_deleted,"有効",{value: :true, style: "display :inline-block;",} %>
+                   <%= f.radio_button :is_deleted, :true %>
+                   <%= f.label :is_deleted,"退会済み", {value: :false, style: "display :inline-block;"} %>
+                   <%= f.submit "更新", class: "btn btn-primary"  %>
+				</div>
 		<% end %>
-	<% else %>
-		<div>
-			<% if @user.id == current_user.id %>
-				    <%= @msg %>
-				<% else %>
-				    <% if @is_room == true %>
-				        <p><%= link_to 'DMへ', room_path(@room_id) %></p>
-				    <% else %>
-				        <%= form_for @room do |f| %>
-				            <%= fields_for @entry do |e|%>
-				                <% e.hidden_field :user_id, value: @user.id %>
-				            <% end %>
-				        <%= f.submit "DMを開始する"%>
-				        <% end %>
-				    <% end %>
-				<% end %>
-			</div>
-	<% end %>
+
+
+
+			<% end %>
+		
+		
+	
 </div>

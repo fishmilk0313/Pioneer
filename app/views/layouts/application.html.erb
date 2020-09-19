@@ -14,104 +14,176 @@
             <h1>Pioneer</h1>
     </div>
          <!--　ユーザーがログインしている時　-->
-        <% if user_signed_in? %>
+    <% if user_signed_in? %>
       <div class ="header-item">
         <nav>
-          <ul class ="nav-list">
+          <ul class ="nav-list header ">
+            <!-- 検索バー　-->
+            <li class ="find">
+              <%= form_tag(search_path, method: :get) do %>
+
+          　　<%= select_tag 'range' ,options_for_select([['---選択してください---', ''], ['ユーザーネーム', '1'], ['足跡', '2'], ['トピック', '3']]) %>
+
+             　　<%= select_tag 'find', options_for_select([["前方一致","forward_match"], ["後方一致","backward_match"], ["完全一致","perfect_match"], ["部分一致","partial_match"]]) %>
+             　　<%= text_field_tag (:word) %>
+             　　<%= submit_tag "検索" %>
+             <% end %>
+           </li>
             <!-- 投稿する -->
             <li class ="nav-list-item">
               <%= link_to new_users_post_path do %>
               <i class="fas fa-plus-square fa-2x"></i>
               <% end %>
             </li>
+            <!--  DM -->
+            <li class ="nav-list-item">
+              <%= link_to rooms_path do %>
+                <i class="fas fa-comments fa-2x"></i>
+              <% end %>
+            </li>
          <!-- ログアウト　-->
-          <li class="nav-list-item">
-                <%= link_to destroy_user_session_path, method: :delete do %>
+            <li class="nav-list-item">
+              <%= link_to destroy_user_session_path, method: :delete do %>
                 <i class="fas fa-sign-out-alt fa-2x"></i>
-                <% end %>
-          </li>
+              <% end %>
+            </li>
+
           <% if unchecked_notifications.any? %>
             <i class="fa fa-circle" style="color: gold;"></i>
           <% end %>
-          <li class ="nav-list-item">
+            <li class ="nav-list-item">
               <%= link_to users_notifications_path, class: "btn-default" do %>
                 <i class="fas fa-bell fa-2x"></i>
               <% end %>
-          </li>
-          <li class = "nav-list-item">
-            <!-- プロフィール　-->
-             <div class ="customer-name">
-            <%= attachment_image_tag @user, :profile_image, fallback: "no-image.png",  style: "width: 50px; height: 40px;",class:"profile-image" %><%= current_user.name %>
-            </div>
-          </li>
-        </ul>
-      </nav>
+            </li>
+             <!-- プロフィール　-->
+            <li class = "nav-list-item">
+              <div class ="customer-name">
+                <%= attachment_image_tag current_user, :profile_image, fallback: "no-image.png",  style: "width: 50px; height: 40px;",class:"profile-image" %><%= current_user.name %>
+              </div>
+            </li>
+           </ul>
+        </nav>
 
 
-        <% elsif host_signed_in? %>
+    <% elsif host_signed_in? %>
+      <div class ="header-item">
+        <nav>
 
+          <ul class ="nav-list">
+            <!-- 検索バー -->
              <li class ="nav-list-item">
-               <%= link_to new_hosts_topics_path do %>
-                <i class="fas fa-plus-square fa-3x"></i>
-               <% end %>
+              <%= form_tag(search_path, method: :get) do %>
+
+          　　<%= select_tag 'range' ,options_for_select([['---選択してください---', ''], ['ユーザーネーム', '1'], ['足跡', '2'], ['トピック', '3']]) %>
+
+             　　<%= select_tag 'find', options_for_select([["前方一致","forward_match"], ["後方一致","backward_match"], ["完全一致","perfect_match"], ["部分一致","partial_match"]]) %>
+             　　<%= text_field_tag (:word) %>
+             　　<%= submit_tag "検索" %>
+             <% end %>
+           </li>
+            <!-- トピック新規投稿　-->
+            <li class ="nav-list-item">
+              <%= link_to new_hosts_topic_path do %>
+                <i class="fas fa-plus-square fa-2x"></i>
+              <% end %>
+            </li>
+            <!-- 問い合わせ -->
+            <li class ="nav-list-item">
+              <%= link_to  letter_opener_web_path do %>
+                <i class="fas fa-envelope fa-2x"></i>
+              <% end %>
             </li>
 
               <!-- ログアウト　-->
-              <li class="nav-list-item">
-                <%= link_to destroy_host_session_path, method: :delete do %>
-                <i class="fas fa-sign-out-alt"></i> %>
-                <% end %>
-              </li>
-            </ul>
-          </nav>
-
-        <% else %>
-              <!-- 新規登録 -->
-              <li class="nav-list-item">
-                <%= link_to new_user_registration_path do %>
-                <i class="fas fa-user-plus"></i>
-              </li>
+            <li class="nav-list-item">
+              <%= link_to destroy_host_session_path, method: :delete do %>
+                <i class="fas fa-sign-out-alt fa-2x "></i>
               <% end %>
-              <!-- ログイン　-->
-              <li class="nav-list-item">
-                <%= link_to new_user_session_path  do %>
-                <i class="fas fa-sign-in-alt"></i>
-                <% end %>
-              </li>
-        <% end %>
+            </li>
+            <li class ="nav-list-item">
+              管理者ログイン
+            </li>
+          </ul>
+        </nav>
       </div>
-    </div>
-  </header>
+
+    <% else %>
+      <div class ="header-item">
+        <nav>
+          <ul class ="nav-list">
+            <!-- 新規登録 -->
+            <li class="nav-list-item">
+              <%= link_to new_user_registration_path do %>
+                <i class="fas fa-user-plus fa-2x"></i>
+              <% end %>
+            </li>
+              <!-- ログイン　-->
+            <li class="nav-list-item">
+              <%= link_to new_user_session_path  do %>
+                <i class="fas fa-sign-in-alt fa-2x"></i>
+              <% end %>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    <% end %>
+  </div>
+</header>
 
   <body>
     <%= yield %>
   </body>
 
   <footer>
-    <nav class ="nav-wrap">
-      <ul class="nav-list">
-    <li class ="nav-list-item">
-        <%= link_to "Home", root_path %>
-    </li>
+    <% if  host_signed_in? %>
+     <nav class ="nav-wrap">
+        <ul class="nav-list">
+          <li class ="nav-list-item">
+              <%= link_to "Home", root_path %>
+          </li>
 
-     <li class="nav-list-item">
-        <%= link_to "About", homes_about_path %>
-    </li>
-    <li class="nav-list-item">
-        <%= link_to "Timeline", users_posts_path %>
-    </li>
-    <li class="nav-list-item">
-        <%= link_to "Topic", users_topics_path(current_user) %>
-    </li>
+           <li class="nav-list-item">
+              <%= link_to "About", homes_about_path %>
+          </li>
+          <li class="nav-list-item">
+              <%= link_to "User", hosts_users_path %>
+          </li>
+          
+          <li class="nav-list-item">
+              <%= link_to "Topic", hosts_topics_path %>
+          </li>
 
-    <li class ="nav-list-item">
-        <%= link_to "contact", new_contact_path %>
-    </li>
-  </ul>
-   </nav>
+          <li class ="nav-list-item">
+              <%= link_to "TimeLine", hosts_posts_path %>
+          </li>
+        </ul>
+      </nav>
+
+    <% else %>
+      <nav class ="nav-wrap">
+        <ul class="nav-list">
+          <li class ="nav-list-item">
+              <%= link_to "Home", root_path %>
+          </li>
+
+           <li class="nav-list-item">
+              <%= link_to "About", homes_about_path %>
+          </li>
+          <li class="nav-list-item">
+              <%= link_to "Timeline", users_posts_path %>
+          </li>
+          <li class="nav-list-item">
+              <%= link_to "Topic", users_topics_path %>
+          </li>
+
+          <li class ="nav-list-item">
+              <%= link_to "contact", new_contact_path %>
+          </li>
+        </ul>
+      </nav>
+    <% end %>
    <p class ="text-center">© All rights reserved by dmmwebcamp.</p>
 
  </footer>
-
-
 </html>

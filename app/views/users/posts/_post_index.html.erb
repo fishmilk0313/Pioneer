@@ -5,29 +5,42 @@
            <%= attachment_image_tag post.user, :profile_image, fallback: "no-image.png", style: "width: 50px; height: 50px;",class:"profile-image" %>
            <%= post.user.name %></br>
           </div>
+        <% if user_signed_in? %>
           <%= link_to users_post_path(post) do %>
             <div class ="post-image-frame text-center">
                <%= attachment_image_tag(post, :image, fallback: "no-image.png", class: "post-image") %>
             </div>
           <% end %>
+          
+          <% else %>
+          <%= link_to hosts_post_path(post) do %>
+            <div class ="post-image-frame text-center">
+               <%= attachment_image_tag(post, :image, fallback: "no-image.png", class: "post-image") %>
+            </div>
+          <% end %>
+        <% end %>
             <div class ="post-list-title col-xs-6">
               <h3><%= post.title %></h3>
             </div>
             <div class ="col-xs-6 text-right">
+              <%= link_to users_posts_path(@category) do %>
               <h4><%= post.category.name %></h4>
+              <% end %>
             </div>
            
             <div class="post-list-text col-xs-12">
               <P><%= post.text %></P>
             </div>
 
+            <% if user_signed_in? %>
             <div class ="col-xs-offset-5 col-xs-3 text-right" id ="favorites_buttons_<%= post.id%>">
                <%= render  'users/posts/favorite', post: post %>
              </div>
              <div class ="col-xs-4 text-right">
                 <%= post.comments.count %>件コメント
             </div>
+            <% end %>
 
         </div>
-       
-        <% end %>
+<% end %>
+

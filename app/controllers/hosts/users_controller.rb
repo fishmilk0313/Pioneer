@@ -1,6 +1,7 @@
 class Hosts::UsersController < ApplicationController
+  before_action :authenticate_host!
   def index
-    @users = User.all
+    @users = User.page(params[:page]).per(10)
   end
 
   def show

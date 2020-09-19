@@ -1,11 +1,17 @@
 Rails.application.routes.draw do
-  get 'rooms/show'
+ 
+  get 'posts/index'
+  get 'posts/show'
+  get 'posts/destroy'
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   resources :contacts
   root 'homes#top'
 
+  get 'search' => 'searches#find'
+
   get 'homes/top' => 'homes#top'
   get 'homes/about' => 'homes#about'
+  get 'rooms/show'
 
   devise_for :hosts, controllers: {
     sessions: 'hosts/sessions',
@@ -20,6 +26,7 @@ Rails.application.routes.draw do
     resources :categories
     resources :topics
     resources :users, only: [:index, :show, :edit, :update]
+    resources :posts, only: [:index, :show, :destroy]
   end
 
   namespace :users do

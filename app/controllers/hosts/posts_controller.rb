@@ -1,6 +1,6 @@
-class Users::PostsController < ApplicationController
+class Hosts::PostsController < ApplicationController
   before_action :set_categories, only: [:new, :edit, :index, :create, :update]
-  before_action :authenticate_user!
+  before_action :authenticate_host!
 
 
 
@@ -8,28 +8,22 @@ class Users::PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
+    if params[:category_id]
+      # Categoryのデータベースのテーブルから一致するidを取得
+      @category = Category.find(params[:category_id])
+       
+      # category_idと紐づく投稿を取得
+      @posts = @category.posts.order(created_at: :desc).all
+    else
       @posts = Post.page(params[:page]).per(6)
-    end
   end
 
   # GET /posts/1
   # GET /posts/1.json
   def show
     @post = Post.find(params[:id])
-    @comment = Comment.new
   end
 
-  # GET /posts/new
-  def new
-    @post = Post.new
-  end
-
-  # GET /posts/1/edit
-  def edit
-  end
-
-  # POST /posts
-  # POST /posts.json
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
@@ -59,7 +53,7 @@ class Users::PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to users_posts_path
+    redirect_to hosts_posts_path
   end
 
    def self.search(search,word)

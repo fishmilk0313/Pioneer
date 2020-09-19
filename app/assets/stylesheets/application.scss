@@ -36,16 +36,20 @@ header {
   heigth: 400px;
 }
 .header-item{
-  display: flex;
-  justify-content: flex-end;
   box-shadow: 1px 1px 5px 1px #999;
 }
-
 
 .nav-list {
   text-align: center;
   padding: 10px 0;
   margin: 0 auto;
+}
+header .nav-list {
+   justify-content: flex-end;
+   display: flex;
+}
+header .nav-list .find{
+  margin-right: auto;
 }
 .nav-list-item {
   list-style: none;

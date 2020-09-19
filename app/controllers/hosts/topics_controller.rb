@@ -1,11 +1,12 @@
 class Hosts::TopicsController < ApplicationController
   before_action :set_categories, only: [:new, :edit, :index, :create, :update]
+  before_action :authenticate_host!
 
   # GET /topics
   # GET /topics.json
   def index
     @topic = Topic.order(updated_at: :desc).limit(1)
-    @topics = Topic.all
+    @topics = Topic.page(params[:page]).per(6)
   end
 
   # GET /topics/1
@@ -44,7 +45,7 @@ class Hosts::TopicsController < ApplicationController
     else
       render :edit
     end
-    end
+  end
 
   # DELETE /topics/1
   # DELETE /topics/1.json
@@ -69,3 +70,4 @@ class Hosts::TopicsController < ApplicationController
     params.require(:topic).permit(:category_id, :title, :text, :image)
   end
 end
+

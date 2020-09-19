@@ -1,0 +1,11 @@
+<div class ="container">
+  <div class ="row">
+    <% if @range == '2' %>
+      <%= render 'users/posts/post_index', {posts: @post} %>
+    <% elsif @range =='3' %>
+      <%= render 'hosts/topics/topic_index', {topics: @topic} %>
+    <% else %>
+      <%= render 'hosts/users/user_index', {users: @user} %>
+    <% end %>
+  </div>
+</div>
