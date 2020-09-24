@@ -1,8 +1,8 @@
 class CreateNotifications < ActiveRecord::Migration[5.2]
    def change
     create_table :notifications do |t|
-      t.references :visitor, foreign_key:{ to_table: :users }, null: false, type: :integer
-      t.references :visited, foreign_key:{ to_table: :users }, null: false, type: :integer
+      t.integer :visitor_id, null: false
+      t.integer :visited_id, null: false
       t.references :post, foregin_key: true, type: :integer
       t.references :comment, foregin_key: true, type: :integer
       t.references :room, foreign_key: true, type: :integer
@@ -13,5 +13,7 @@ class CreateNotifications < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
+    add_index :notifications, :visitor_id
+    add_index :notifications, :visited_id
   end
 end
