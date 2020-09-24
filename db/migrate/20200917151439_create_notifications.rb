@@ -3,10 +3,10 @@ class CreateNotifications < ActiveRecord::Migration[5.2]
     create_table :notifications do |t|
       t.integer :visitor_id, null: false
       t.integer :visited_id, null: false
-      t.references :post, foregin_key: true, type: :integer
-      t.references :comment, foregin_key: true, type: :integer
-      t.references :room, foreign_key: true, type: :integer
-      t.references :message, foreign_key:true, type: :integer
+      t.integer :post_id
+      t.integer :comment_id
+      t.integer :room_id
+      t.integer :message_id
       t.string :action, null: false
       t.boolean :checked, null: false, default: false
 
@@ -15,5 +15,9 @@ class CreateNotifications < ActiveRecord::Migration[5.2]
     end
     add_index :notifications, :visitor_id
     add_index :notifications, :visited_id
+    add_index :notifications, :post_id
+    add_index :notifications, :comment_id
+    add_index :notifications, :room_id
+    add_index :notifications, :message_id
   end
 end

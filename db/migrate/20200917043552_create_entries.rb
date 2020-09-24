@@ -6,5 +6,7 @@ class CreateEntries < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
+    add_index :entries, :room_id
+    add_index :entries, :user_id
   end
 end
