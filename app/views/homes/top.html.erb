@@ -1,91 +1,230 @@
-<div id ="container-fluid">
-	<h1 class ="text-center">Pioneerへようこそ</h1>
-	<div id="theTarget">
-		<div class ="image1"></div>
-		<div class ="image2"></div>
-		<div class ="image3"></div>
-		<div class ="image4"></div>
-		<div class ="image5"></div>
-	</div>
-</div>
-	<div class ="container">
-		<div class ="row">
-			<div class ="top-new-post">
-				<h2 class ="text-center">新規足跡</h2>
-					<div class ="top-post-list">
-						<div class ="top-post-item">
-							<%= link_to users_post_path(@post[0]) do %>
-								<%= attachment_image_tag(@post[0], :image, fallback: "no-image.png", class: "top-post col-xs-4") %></br>
-								<h3 class ="text-center"><%= @post[0].title %></h3>
-							<% end %>
-						</div>
-					
-						<div class ="top-post-item">
-							<%= link_to users_post_path(@post[1]) do %>
-								<%= attachment_image_tag(@post[1], :image, fallback: "no-image.png", class: "top-post col-xs-4") %></br>
-								<h3 class ="text-center"><%= @post[1].title %></h3>
-							<% end %>
-						</div>
-
-						<div class ="top-post-item">
-							<%= link_to users_post_path(@post[2]) do %>
-								<%= attachment_image_tag(@post[2], :image, fallback: "no-image.png", class: "top-post col-xs-4") %></br>
-							<% end %>
-							<h3 class ="text-center"><%= @post[2].title %></h3>
-						</div>
-					</div>
-			</div>
-
-			<div class ="top-post">
-				<h3 class ="text-center">新規トピック</h3>
-					<div class ="top-topic-list">
-						<div class ="top-topic-item">
-							<%= link_to users_topic_path(@topic[0]) do %>
-								<%= attachment_image_tag(@topic[0], :image, fallback: "no-image.png", class: "top-topic col-xs-2") %>
-							<% end %>
-						</div>
-
-					<div class="top-topic-item">
-							<h3><%= @topic[0].title %></h3></br>
-							<P><%= @topic[0].text %></P>
-					</div>
-
-					<div class ="top-topic-item">
-							<%= link_to users_topic_path(@topic[1]) do %>
-								<%= attachment_image_tag(@topic[1], :image, fallback: "no-image.png", class: "top-topic col-xs-2") %>
-							<% end %>
-					</div>
-
-					<div class="top-topic-item">
-						<h3><%= @topic[1].title %></h3></br>
-						<P><%= @topic[1].text %></P>
-					</div>
-
-					<div class ="top-topic-item">
-						<%= link_to users_topic_path(@topic[2]) do %>
-						<%= attachment_image_tag(@topic[2], :image, fallback: "no-image.png", class: "top-topic col-xs-2") %>
-						<% end %>
-					</div>
-
-					<div class="top-topic-item">
-						<h3><%= @topic[2].title %></h3></br>
-						<P><%= @topic[2].text %></P>
-					</div>
-
-					<div class ="top-topic-item">
-						<%= link_to users_topic_path(@topic[3]) do %>
-							<%= attachment_image_tag(@topic[3], :image, fallback: "no-image.png", class: "top-topic col-xs-2") %>
-						<% end %>
-					</div>
-
-					<div class="top-topic-item">
-						<h3><%= @topic[3].title %></h3></br>
-						<P><%= @topic[3].text %></P>
-					</div>
-			</div>
-
+<% if user_signed_in? %>
+	<div id ="container">
+		<div id="theTarget">
+			<div class ="image1"></div>
+			<div class ="image2"></div>
+			<div class ="image3"></div>
+			<div class ="image4"></div>
+			<div class ="image5"></div>
 		</div>
 	</div>
-</div>
+		<div class ="container">
+			<div class ="row">
+				<div class ="top-new-post">
+					<h2 class ="top text-center">新規足跡</h2>
+						<div class ="top-post-list">
+							<div class ="top-post-item">
+								<%= link_to users_post_path(@post[0]) do %>
+									<%= attachment_image_tag(@post[0], :image, fallback: "no-image.png", class: "top-post col-xs-4") %></br>
+									<h3 class ="text-center"><%= @post[0].title %></h3>
+								<% end %>
+							</div>
+						
+							<div class ="top-post-item">
+								<%= link_to users_post_path(@post[1]) do %>
+									<%= attachment_image_tag(@post[1], :image, fallback: "no-image.png", class: "top-post col-xs-4") %></br>
+									<h3 class ="text-center"><%= @post[1].title %></h3>
+								<% end %>
+							</div>
+
+							<div class ="top-post-item">
+								<%= link_to users_post_path(@post[1]) do %>
+									<%= attachment_image_tag(@post[1], :image, fallback: "no-image.png", class: "top-post col-xs-4") %></br>
+									<h3 class ="text-center"><%= @post[1].title %></h3>
+								<% end %>
+							</div>
+						</div>
+				</div>
+
+				<div class ="top-topic-page">
+					<h3 class ="top text-center">新規トピック</h3>
+						<div class ="top-topic-list">
+							<div class ="top-topic-body">
+								<div class ="top-topic-image">
+									<%= link_to users_topic_path(@topic[0]) do %>
+										<%= attachment_image_tag(@topic[0], :image, fallback: "no-image.png", class: "top-topic col-xs-2") %>
+									<% end %>
+								</div>
+
+								<div class="top-topic-item">
+										<h3><%= @topic[0].title %></h3></br>
+										<P><%= @topic[0].text %></P>
+								</div>
+							</div>
+
+							<div class ="top-topic-body">
+								<div class ="top-topic-image">
+										<%= link_to users_topic_path(@topic[1]) do %>
+											<%= attachment_image_tag(@topic[1], :image, fallback: "no-image.png", class: "top-topic col-xs-2") %>
+										<% end %>
+								</div>
+
+								<div class="top-topic-item">
+									<h3><%= @topic[1].title %></h3></br>
+									<P><%= @topic[1].text %></P>
+								</div>
+							</div>
+							<div class ="top-topic-body">
+								<div class ="top-topic-image">
+									<%= link_to users_topic_path(@topic[2]) do %>
+									<%= attachment_image_tag(@topic[2], :image, fallback: "no-image.png", class: "top-topic col-xs-2") %>
+									<% end %>
+								</div>
+
+								<div class="top-topic-item">
+									<h3><%= @topic[2].title %></h3></br>
+									<P><%= @topic[2].text %></P>
+								</div>
+							</div>
+							<div class ="top-topic-body">
+								<div class ="top-topic-image">
+									<%= link_to users_topic_path(@topic[3]) do %>
+										<%= attachment_image_tag(@topic[3], :image, fallback: "no-image.png", class: "top-topic col-xs-2") %>
+									<% end %>
+								</div>
+
+								<div class="top-topic-item">
+									<h3><%= @topic[3].title %></h3></br>
+									<P><%= @topic[3].text %></P>
+								</div>
+							</div>
+						</div>
+					</div>
+			</div>
+		</div>
+<% elsif host_signed_in? %>
+<div id ="container">
+		<div id="theTarget">
+			<div class ="image1"></div>
+			<div class ="image2"></div>
+			<div class ="image3"></div>
+			<div class ="image4"></div>
+			<div class ="image5"></div>
+		</div>
+	</div>
+		<div class ="container">
+			<div class ="row">
+				<div class ="top-new-post">
+					<h2 class ="top text-center">新規足跡</h2>
+						<div class ="top-post-list">
+							<div class ="top-post-item">
+								<%= link_to users_post_path(@post[0]) do %>
+									<%= attachment_image_tag(@post[0], :image, fallback: "no-image.png", class: "top-post col-xs-4") %></br>
+									<h3 class ="text-center"><%= @post[0].title %></h3>
+								<% end %>
+							</div>
+						
+							<div class ="top-post-item">
+								<%= link_to users_post_path(@post[1]) do %>
+									<%= attachment_image_tag(@post[1], :image, fallback: "no-image.png", class: "top-post col-xs-4") %></br>
+									<h3 class ="text-center"><%= @post[1].title %></h3>
+								<% end %>
+							</div>
+
+							<div class ="top-post-item">
+								<%= link_to users_post_path(@post[1]) do %>
+									<%= attachment_image_tag(@post[1], :image, fallback: "no-image.png", class: "top-post col-xs-4") %></br>
+									<h3 class ="text-center"><%= @post[1].title %></h3>
+								<% end %>
+							</div>
+						</div>
+				</div>
+
+				<div class ="top-topic-page">
+					<h3 class ="top text-center">新規トピック</h3>
+						<div class ="top-topic-list">
+							<div class ="top-topic-body">
+								<div class ="top-topic-image">
+									<%= link_to users_topic_path(@topic[0]) do %>
+										<%= attachment_image_tag(@topic[0], :image, fallback: "no-image.png", class: "top-topic col-xs-2") %>
+									<% end %>
+								</div>
+
+								<div class="top-topic-item">
+										<h3><%= @topic[0].title %></h3></br>
+										<P><%= @topic[0].text %></P>
+								</div>
+							</div>
+
+							<div class ="top-topic-body">
+								<div class ="top-topic-image">
+										<%= link_to users_topic_path(@topic[1]) do %>
+											<%= attachment_image_tag(@topic[1], :image, fallback: "no-image.png", class: "top-topic col-xs-2") %>
+										<% end %>
+								</div>
+
+								<div class="top-topic-item">
+									<h3><%= @topic[1].title %></h3></br>
+									<P><%= @topic[1].text %></P>
+								</div>
+							</div>
+							<div class ="top-topic-body">
+								<div class ="top-topic-image">
+									<%= link_to users_topic_path(@topic[2]) do %>
+									<%= attachment_image_tag(@topic[2], :image, fallback: "no-image.png", class: "top-topic col-xs-2") %>
+									<% end %>
+								</div>
+
+								<div class="top-topic-item">
+									<h3><%= @topic[2].title %></h3></br>
+									<P><%= @topic[2].text %></P>
+								</div>
+							</div>
+							<div class ="top-topic-body">
+								<div class ="top-topic-image">
+									<%= link_to users_topic_path(@topic[3]) do %>
+										<%= attachment_image_tag(@topic[3], :image, fallback: "no-image.png", class: "top-topic col-xs-2") %>
+									<% end %>
+								</div>
+
+								<div class="top-topic-item">
+									<h3><%= @topic[3].title %></h3></br>
+									<P><%= @topic[3].text %></P>
+								</div>
+							</div>
+						</div>
+					</div>
+			</div>
+		</div>
+<% else %>
+	<div class ="container-fuild unlogin">
+		<div class ="row">
+			<div class ="unlogin-top">
+				<div class ="unlogin-text col-xs-offset-3 col-xs-5">
+				<h1 style ="color:#770000">Pioneerへようこそ。</h1>
+				<p>~旅人同士で作り上げるSNS~</p>
+              <%= link_to "SiginUp",new_user_registration_path, class:"btn-open"%>
+              <%= link_to "Login",new_user_session_path, class:"btn-open"  %>
+             </div>
+         </div>
+     </div>
+<% end %>
+     </div>
+
+<script>
+	$(document).ready(function () {
+	  $("#theTarget").skippr({
+	    transition : 'slide',
+	    // 変化に係る時間(ミリ秒)
+	    speed : 1000,
+	    // easingの種類
+	    easing : 'easeOutQuart',
+	    // ナビゲーションの形("block" or "bubble")
+	    navType : 'block',
+	    // 子要素の種類("div" or "img")
+	    childrenElementType : 'div',
+	    // ナビゲーション矢印の表示(trueで表示)
+	    arrows : true,
+	    // スライドショーの自動再生(falseで自動再生なし)
+	    autoPlay : true,
+	    // 自動再生時のスライド切替間隔(ミリ秒)
+	    autoPlayDuration : 3000,
+	    // キーボードの矢印キーによるスライド送りの設定(trueで有効)
+	    keyboardOnAlways : true,
+	    // 一枚目のスライド表示時に戻る矢印を表示するかどうか(falseで非表示)
+	    hidePrevious : false
+	  });
+	});
+</script>
 
 

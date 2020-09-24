@@ -1,3 +1,83 @@
 // Place all the styles related to the rooms controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.dmMain{
+	background-color: #FFEFD5;
+	overflow: scroll;
+	height: 400px;
+}
+.chat-field{
+	background-color: #FFEFD5;
+	padding-top: 5px;
+}
+.dmMain >  div:nth-child(1) {
+  margin-top:20px;
+}
+.user-in{
+	background-color: #66CC99;
+	}
+.visited_user p:before {
+	content: '';
+	position:absolute;
+	top:8px;
+	left:-20px;
+	border: 12px solid transparent;
+	border-right:12px solid white;
+}
+.visited_user p { /* 左ふきだしの本体 */
+	display:inline-block;
+	position:relative;
+	background-color:white;
+	border-radius:10px;
+	padding:10px;
+	margin:10px 0 0 10px;
+}
+.current_user p:after { /* 右ふきだしの右三角を描画 */
+	content: '';
+	position:absolute;
+	top:8px;
+	right:-20px;
+	border: 12px solid transparent;
+	border-left:12px solid #85e249;
+
+}
+.current_user p { /* 右ふきだしの本体 */
+	display:inline-block;
+	position:relative;
+	background-color:#85e249;
+	border-radius:10px;
+	padding:10px;
+	margin:10px 10px 0 0;
+}
+.chat-form{
+	height:50px;
+	padding:0 10px; 
+	left:0;
+	top:0; 
+	border-radius:25px;
+	outline:0;
+	background:#eee;
+}
+.chat-bottam{
+	height:50px;
+	width:50px;	
+	background:#7fbfff;
+	color:#fff;
+	border:none;
+	border-radius:25px 25px 25px 25px;
+	font-size:20px;	
+}
+#chat-bottam:hover{
+color:#888;
+}
+.dm_list__content{
+	margin :10px;
+	border-bottom: 1px solid #ccc;
+ 	box-shadow: 1px 1px 2px #ccc;
+}
+.dm_list{
+	border-bottom: 1px solid #ccc;
+ 	box-shadow: 1px 1px 2px #ccc;
+}

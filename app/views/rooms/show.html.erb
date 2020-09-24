@@ -1,29 +1,5 @@
-<div class="user-in">
-<% @entries.each do |e| %>
-    <h3><strong><a href="/users/<%= e.user.id %>"><%= e.user.name%></a></strong></h3>
-<% end %>
-<p>2人のDM❤️</p>
-</div>
-
-<div class="dmMain">
-    <% @messages.each do |m| %>
-       <% if m.user_id == current_user.id %>
-        <div class="current_user">
-            <strong class="current_user"><%= m.body %></strong>
-            <small class="current_user"><%= m.user.name %>さん</small>
-        </div>
-    <% else %>
-        <div class="visited_user">
-            <strong class="visited_user"><%= m.body %></strong>
-            <small class="visited_user"><%= m.user.name %>さん</small>
-        </div>
-    <% end %>
-<% end %>
-
-    <%= form_for @message do |f| %>
-    <%= f.text_field :body, :placeholder => "メッセージを入力して下さい" , :size => 100 %>
-    <%= f.hidden_field :room_id, :value => @room.id %>
-    <br>
-    <%= f.submit "送信する" %>
-    <% end %>
+<div class ="container">
+    <div class ="row">
+            <%= render 'dm', entries: @entries, messages: @messages, message: @message %>
+    </div>
 </div>

@@ -16,6 +16,7 @@ class RoomsController < ApplicationController
 
 
   def show
+    @rooms = current_user.rooms
   	@room = Room.find(params[:id])
   	if Entry.where(user_id: current_user.id, room_id: @room.id).present?
   		@messages = @room.messages.all
@@ -25,4 +26,11 @@ class RoomsController < ApplicationController
   		redirect_back(fallback_location: root_path)
   	end
   end
+
+  def destroy
+    @room = Room.find(params[:id])
+    @room.destroy
+    redirect_to request.referer
+  end
+
 end

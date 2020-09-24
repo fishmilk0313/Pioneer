@@ -1,9 +1,8 @@
-<% @user.followers.each do |user| %>
-<table>
-<tr>
-  <td>  <%= user.name %> </td>
-  <td><%= link_to '詳細', users_user_path(user) %></td>
-</tr>
-
-</table>
-<% end %>
+<div class ="container">
+	<div class =" row">
+		<div class ="col-xs-12">
+			<h1 class ="text-center"><%= @user.name %>のfollowers</h1>
+			<%= render 'follow_index', {user: @user.followers} %>
+		</div>
+	</div>
+</div>

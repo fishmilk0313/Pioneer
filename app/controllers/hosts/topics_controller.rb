@@ -58,6 +58,10 @@ class Hosts::TopicsController < ApplicationController
     end
   end
 
+  def contents
+     @topics = Topic.where(category_id: params[:id],is_active: true)
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.

@@ -4,7 +4,7 @@ class Users::TopicsController < ApplicationController
 
   def index
     @topic = Topic.order(updated_at: :desc).limit(1)
-    @topics = Topic.page(params[:page]).per(10)
+    @topics = Topic.page(params[:page]).per(4)
   end
 
   def show

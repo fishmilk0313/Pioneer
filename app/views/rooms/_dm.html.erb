@@ -1,0 +1,29 @@
+            <div class ="col-xs-offset-2 col-xs-8">
+                <div class="user-in text-center">
+                <h2><%= entries[0].user.name %></h2>
+                </div>
+
+                <div class="dmMain">
+                    <% messages.each do |m| %>
+                       <% if m.user_id == current_user.id %>
+                        <div class="current_user col-xs-12 text-right">
+                           <p> <strong class="current_user"><%= m.body %></strong></p>
+                        </div>
+                    <% else %>
+                        <div class="visited_user col-xs-12">
+                            <P>
+                                <small class="visited_user"><%= m.user.name %>さん</small><br>
+                                <strong class="visited_user"><%= m.body %></strong>
+                            </P>
+                        </div>
+                    <% end %>
+                <% end %>
+            </div>
+                <div class ="chat-field text-right">
+                    <%= form_for message do |f| %>
+                        <%= f.text_field :body, :placeholder => "メッセージを入力して下さい" , class: "chat-form", size: 50 %>
+                        <%= f.hidden_field :room_id, :value => @room.id %>
+                        <%= f.submit "送信", class: "chat-bottam"%>
+                    <% end %>
+                </div>
+            </div>

@@ -11,7 +11,6 @@ Rails.application.routes.draw do
 
   get 'homes/top' => 'homes#top'
   get 'homes/about' => 'homes#about'
-  get 'rooms/show'
 
   devise_for :hosts, controllers: {
     sessions: 'hosts/sessions',
@@ -25,13 +24,29 @@ Rails.application.routes.draw do
   namespace :hosts do
     resources :categories
     resources :topics
-    resources :users, only: [:index, :show, :edit, :update]
-    resources :posts, only: [:index, :show, :destroy]
+    resources :users, only: [:index, :show, :edit, :update] do 
+      member do
+        get :contents
+      end
+    end
+    resources :posts, only: [:index, :show, :destroy] do 
+      member do
+        get :contents
+      end
+    end
   end
 
   namespace :users do
-    resources :topics, only: [:index, :show]
-    resources :posts
+    resources :topics, only: [:index, :show]do
+      member do
+        get :contents
+      end
+    end
+    resources :posts do 
+      member do
+        get :contents
+      end
+    end
     resources :users do
       member do
         get :following, :followers
@@ -45,7 +60,7 @@ Rails.application.routes.draw do
     put "/:id/hide" => "users#hide", as: 'users_hide'
   end
   resources :messages, only: [:create]
-  resources :rooms, only: [:create, :show, :index]
+  resources :rooms, only: [:create, :show, :index, :destroy]
 
 
   resources :posts, only: [:create, :destroy] do

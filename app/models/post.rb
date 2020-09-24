@@ -7,6 +7,18 @@ class Post < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :notifications, dependent: :destroy
 
+  validates :title,
+            :presence => {:message => "が入力されていません。" },
+            :length => { :maximum => 10, :message => "１０文字以内です。"}
+  
+  validates :text,
+            :presence => {:message => "が入力されていません。" },
+            :length  => { :maximum => 50, :message => "50文字以内が投稿可能です。"}
+
+  validates :category, :presence => {:message => "を選択してください" }
+  validates :image, :presence => {:message => "を選択してください" }
+
+
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
    end
@@ -51,7 +63,7 @@ class Post < ApplicationRecord
       elsif find == "backward_match"
         @post = Post.where("title LIKE?","%#{word}")
       elsif find == "perfect_match"
-        @post = Post.where("#{word}")
+        @post = Post.where("title","#{word}")
       elsif find == "partial_match"
          @post = Post.where("title LIKE?","%#{word}%")
       else

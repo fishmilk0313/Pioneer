@@ -1,9 +1,10 @@
 <div class ="container">
 	<div class ="row">
-		<div class ="create-topics col-xs-offset-3 col-xs-6 text-center">
+		<div class ="create-topics col-xs-offset-1 col-xs-10 col-lg-8 col-lg-offset-2 text-center">
 		<div class ="page-title text-center">
       		<h2><storong>足跡を記す</storong></h2>
     	</div>
+    	 <%= render "users/shared/error_messages", resource: @post %>
     		<%= form_for(@post, url: users_posts_path, method: :post)do |f| %>
     			<div class ="new-post-image col-xs-12">
     					<%= attachment_image_tag(@topic, :image, fallback: "no-image.png", class:"new-image") %>
@@ -31,3 +32,18 @@
 			</div>
 		</div>
 	</div>
+	<script>
+$(function(){
+    // inputのidから情報の取得
+    $('#post_image').on('change', function (e) {
+// ここから既存の画像のurlの取得
+    var reader = new FileReader();
+    reader.onload = function (e) {
+        $(".image").attr('src', e.target.result);
+    }
+// ここまで
+    reader.readAsDataURL(e.target.files[0]); //取得したurlにアップロード画像のurlを挿入
+});
+});
+
+</script>

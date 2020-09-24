@@ -1,15 +1,10 @@
 class Users::PostsController < ApplicationController
   before_action :set_categories, only: [:new, :edit, :index, :create, :update]
   before_action :authenticate_user!
-
-
-
-
   # GET /posts
   # GET /posts.json
   def index
       @posts = Post.page(params[:page]).per(6)
-    end
   end
 
   # GET /posts/1
@@ -33,7 +28,7 @@ class Users::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    if @post.save!
+    if @post.save
       redirect_to users_posts_path
     else
       render :new
@@ -62,19 +57,9 @@ class Users::PostsController < ApplicationController
     redirect_to users_posts_path
   end
 
-   def self.search(search,word)
-      if search == "forward_match"
-      　　@topic = Topic.where("title LIKE?","#{word}%")
-      elsif search == "backward_match"
-                        　　　@post = Post.where("title LIKE?","%#{word}")
-      elsif search == "perfect_match"
-                        　　　@post = Post.where("#{word}")
-      elsif search == "partial_match"
-                        　　　@post = Post.where("title LIKE?","%#{word}%")
-      else
-                        　　　@post = Post.all
-      end
-    end
+
+   def contents
+  end
 
   private
 

@@ -1,14 +1,14 @@
 <div class ="container">
   <div class ="row">
     <div class ="page-title text-center">
-      <h2><storong>Topics</storong>
+      <h1><storong>Topics</storong>
         <!--　カテゴリーのタグ検索　　-->
-      </h2>
+      </h1>
     </div>
 
-    <div class ="topic-index  col-xs-offset-2 col-xs-8">
+    <div class ="topic-index  col-lg-offset-2 col-lg-8 col-xs-12">
       
-      <%=link_to hosts_topic_path(@topic[0]) do %>
+      <%=link_to users_topic_path(@topic[0]) do %>
       <div class ="topic-list-body col-xs-12">
         <div class ="new-topic-image col-xs-12 text-center">
           <%= attachment_image_tag(@topic[0], :image, class: "big-topic-image") %>
@@ -25,6 +25,9 @@
       </div>
       <% end %>
        <%= render 'hosts/topics/topic_index', {topics: @topics} %>
+      <div class= "col-xs-12 text-center">
+          <%= paginate @topics %>
+      </div>
      
        </div>
       </div>

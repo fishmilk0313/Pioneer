@@ -1,29 +1,26 @@
 <div class ="container">
 	<div class ="row">
-		<div class ="post-frame col-xs-offset-3 col-xs-6">
+		<div class ="post-frame col-lg-offset-3 col-lg-6 col-xs-12">
          	<%= render  'users/posts/post_show', post: @post %>
 
          	<div class ="col-xs-offset-8 col-xs-4 text-right" id ="favorites_buttons_<%= @post.id%>">
 				<%= render  'users/posts/favorite', post: @post %>
 			</div>
-			
-			<div class ="col-xs-12 text-right">
-				<% if @post.user.id == current_user.id %>
+			<% if @post.user.id == current_user.id %>
+				<div class ="comment-delete col-xs-12 text-right">
 					<%= link_to users_post_path(@post), method: :delete, "data-confirm" => "本当に消しますか？" do %>
 						<button type="button" class="btn btn-danger" aria-label="Left Align"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
 					<% end %>
-				<% end %>
-			</div>
-			
-
+				</div>
+			<% end %>
 			<% if user_signed_in? %>
 		     <!-- コメント入力欄をブログの詳細ページに表示するためのrender -->
-		    <%= render partial: 'comments/form', locals: { comment: @comment, post: @post } %>
+		    	<%= render partial: 'comments/form', locals: { comment: @comment, post: @post } %>
 		  	<% end %>
-			<div id="comments_area"><!-- #① -->
+		  	<div id="comments_area"><!-- #① -->
 	      <!-- 投稿されたコメント一覧をブログの詳細ページに表示するためのrender -->
-	     		 <%= render partial: 'comments/index', locals: { post: @post ,comments: @comment } %>
-	    	</div>  
+	     		<%= render partial: 'comments/index', locals: { post: @post ,comments: @comment } %>
+	    	</div>
 	    </div>
 	</div>
 </div>

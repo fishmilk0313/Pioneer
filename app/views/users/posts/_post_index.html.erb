@@ -1,6 +1,6 @@
  <% posts.each do |post| %>
-        <div class ="post-frame  col-xs-6">
-           <div class ="post-user col-xs-offset-1 col-xs-11">
+        <div class ="post-frame  col-sm-6">
+           <div class ="post-user col-sm-offset-1 col-sm-11">
          
            <%= attachment_image_tag post.user, :profile_image, fallback: "no-image.png", style: "width: 50px; height: 50px;",class:"profile-image" %>
            <%= post.user.name %></br>
@@ -8,6 +8,7 @@
         <% if user_signed_in? %>
           <%= link_to users_post_path(post) do %>
             <div class ="post-image-frame text-center">
+              <span class="masking-tape"></span>
                <%= attachment_image_tag(post, :image, fallback: "no-image.png", class: "post-image") %>
             </div>
           <% end %>
@@ -15,6 +16,7 @@
           <% else %>
           <%= link_to hosts_post_path(post) do %>
             <div class ="post-image-frame text-center">
+              <span class="masking-tape"></span>
                <%= attachment_image_tag(post, :image, fallback: "no-image.png", class: "post-image") %>
             </div>
           <% end %>
@@ -23,7 +25,7 @@
               <h3><%= post.title %></h3>
             </div>
             <div class ="col-xs-6 text-right">
-              <%= link_to users_posts_path(@category) do %>
+              <%= link_to contents_users_post_path(post.category.id) do %>
               <h4><%= post.category.name %></h4>
               <% end %>
             </div>
@@ -33,11 +35,12 @@
             </div>
 
             <% if user_signed_in? %>
-            <div class ="col-xs-offset-5 col-xs-3 text-right" id ="favorites_buttons_<%= post.id%>">
+            <div class ="col-xs-offset-7 col-xs-2 text-right" id ="favorites_buttons_<%= post.id%>">
                <%= render  'users/posts/favorite', post: post %>
              </div>
-             <div class ="col-xs-4 text-right">
-                <%= post.comments.count %>件コメント
+             <div class ="col-xs-3 text-right">
+              <i class="far fa-comment"></i>
+                <%= post.comments.count %>件
             </div>
             <% end %>
 

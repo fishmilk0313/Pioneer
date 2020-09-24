@@ -1,20 +1,23 @@
 <div class ="container">
 	<div class ="row">
-		<div class ="topic-show-title col-xs-offset-1 col-xs-4">
-			<h2><%= @topic.title %> </h2>
-		</div>
-		<div class ="topic-create col-xs-offset-4 col-xs-3 text-right">
-			<h3> <%= @topic.created_at.strftime('%Y/%m/%d') %></h3>
-			<h4> カテゴリー: <%= @topic.category.name %> </h4>
-		</div>
+		<div class ="top-topic-body show-topic-body col-xs-12">
 
-		<div class ="show-topic-image col-xs-12 text-center">
-			 <%= attachment_image_tag(@topic, :image, class: "big-topic-image") %>
-        </div>
+			<div class ="show-topic-image col-lg-6 text-center">
+				 <%= attachment_image_tag(@topic, :image, class: "topic-image-show ") %>
+	        </div>
 
-        <div class ="topic-text col-xs-12">
-        	<%= @topic.text %>
-        </div>
+			<div class ="topic-create col-xs-offset-1 col-xs-5 text-right">
+				<h3> <%= @topic.created_at.strftime('%Y/%m/%d') %></h3>
+				<h4> カテゴリー: <%= @topic.category.name %> </h4>
+			</div>
 
+			<div class ="topic-show-title  col-xs-6">
+				<h2><%= @topic.title %> </h2>
+			</div>
+
+	        <div class ="topic-text col-lg-6">
+	        	<%= @topic.text %>
+	        </div> 
+	    </div>
     </div>
 </div>

@@ -8,13 +8,6 @@ class Hosts::PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    if params[:category_id]
-      # Categoryのデータベースのテーブルから一致するidを取得
-      @category = Category.find(params[:category_id])
-       
-      # category_idと紐づく投稿を取得
-      @posts = @category.posts.order(created_at: :desc).all
-    else
       @posts = Post.page(params[:page]).per(6)
   end
 
@@ -70,14 +63,15 @@ class Hosts::PostsController < ApplicationController
       end
     end
 
+
   private
 
 
-  def set_categories
-    @categories = Category.where(is_active: true)
-  end
+    def set_categories
+      @categories = Category.where(is_active: true)
+    end
 
-  def post_params
-    params.require(:post).permit(:user_id, :category_id, :title, :text, :image)
-  end
+    def post_params
+      params.require(:post).permit(:user_id, :category_id, :title, :text, :image)
+    end
 end

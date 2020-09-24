@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  validates :email, presence: true
   validates :name, presence: true
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -56,11 +57,11 @@ class User < ApplicationRecord
     if find == "forward_match"
       @user = User.where("name LIKE?","#{word}%")
     elsif find == "backward_match"
-      @user = User.where("name LIKE?","%#{word}")
+      @user = User.where("name LIKE?","#{word}%")
     elsif find == "perfect_match"
-  　　@user = User.where("#{word}")
+      @user = User.where("name ","#{word}")
     elsif find == "partial_match"
-    　@user = User.where("name LIKE?","%#{word}%")
+      @user = User.where("name LIKE?","%#{word}%")
     else
  　　　@user = User.all
     end
