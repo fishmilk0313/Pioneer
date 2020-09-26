@@ -1,0 +1,10 @@
+<div class ="category-list col-xs-2">
+	<h1 class ="col-xs-12 text-center">Category <br>list</h1>
+		<% categories.each do |category|  %>
+			<ul class ="category-list-item text-center">
+				<%= link_to contents_users_post_path (category.id) do %>
+			  		<li><%= category.name %></li>
+			  	<% end %>
+			</ul>
+		<% end %>
+</div>

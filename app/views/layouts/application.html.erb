@@ -112,61 +112,62 @@
   </header>
 
   <body>
-    
     <%= yield %>
   </body>
-　<%if host_signed_in? or user_signed_in? %>
+
   <footer>
     <% if  host_signed_in? %>
      <nav class ="nav-wrap">
         <ul class="nav-list">
           <li class ="nav-list-item">
-              <%= link_to "Home", root_path %>
+              <p><%= link_to "Home", root_path %></p>
           </li>
 
            <li class="nav-list-item">
-              <%= link_to "About", homes_about_path %>
+              <p><%= link_to "About", homes_about_path %></p>
           </li>
           <li class="nav-list-item">
-              <%= link_to "User", hosts_users_path %>
+              <p><%= link_to "User", hosts_users_path %></p>
           </li>
           
           <li class="nav-list-item">
-              <%= link_to "Topic", hosts_topics_path %>
+              <p><%= link_to "Topic", hosts_topics_path %></p>
           </li>
 
           <li class ="nav-list-item">
-              <%= link_to "TimeLine", hosts_posts_path %>
+              <p><%= link_to "TimeLine", hosts_posts_path %></p>
           </li>
         </ul>
       </nav>
+       <div class ="foooter-bottom">
       <p class ="text-center">© All rights reserved by dmmwebcamp.</p>
+    </div>
 
     <% elsif user_signed_in? %>
       <nav class ="nav-wrap">
         <ul class="nav-list">
           <li class ="nav-list-item">
-              <%= link_to "Home", root_path %>
+             <p> <%= link_to "Home", root_path %></p>
           </li>
 
            <li class="nav-list-item">
-              <%= link_to "About", homes_about_path %>
+             <p> <%= link_to "About", homes_about_path %></p>
           </li>
           <li class="nav-list-item">
-              <%= link_to "Timeline", users_posts_path %>
+              <p><%= link_to "Timeline", users_posts_path %></p>
           </li>
           <li class="nav-list-item">
-              <%= link_to "Topic", users_topics_path %>
+              <p><%= link_to "Topic", users_topics_path %></p>
           </li>
 
           <li class ="nav-list-item">
-              <%= link_to "contact", new_contact_path %>
+             <p> <%= link_to "contact", new_contact_path %></p>
           </li>
         </ul>
       </nav>
-      <p class ="text-center">© All rights reserved by dmmwebcamp.</p>
-    <% else %>
+      <div class ="foooter-bottom">
+        <p class ="text-center">© All rights reserved by dmmwebcamp.</p>
+      </div>
     <% end %>
  </footer>
- <% end %>
 </html>

@@ -27,15 +27,17 @@
 }
 header{
   width: 100%;
-
+  background-image: image-url('header.jpg');
+  margin-bottom: 120px;
+}
+.bottan{
+  display: flex;
+  justify-content: flex-end;
+  background-color: #CCCCCC;
 }
 .header_flex{
   display: flex;
   flex-wrap: wrap;
-  background-color: #00CC66;
-}
-.bottan{
-  background-color: #CCCCCC;
 }
 .bottan > i{
  border-bottom: solid 3px #ffc778;
@@ -111,6 +113,8 @@ header{
 }
 body{
   background-color: #edece6;
+  min-height: 100vh;
+  position: relative;
 }
 h1{
   font-family:fantasy;
@@ -291,25 +295,51 @@ h2{
   padding: 0.25em 1em;
   border: solid 2px #000;
   border-radius: 3px 0 3px 0;
+  margin-bottom: 200px;
 }
 .about {
   margin-bottom: 50px;
 }
-.about-text:nth-child(odd):before,.about-text:nth-child(even):after{
-    content: '';
-    position: absolute;
-    width:10px;
-    height: 10px;
-    border: solid 2px #000;
-    border-radius: 50%;
+.about-text{
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    color: #5d627b;
+    border-top: solid 5px #5d627b;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
 }
-.about-text:after {
-  top: 154px;
-  left:-12px;
+.about-box{
+  border: 1px solid #ccc; /* 線の太さ・種類・色 */
+  box-shadow:1px 1px 6px 0px #ccc;
+  padding: 50px 10px 10px 10px; /* 内側の余白 上・右・下・左 */
+  position: relative;
+  z-index: -2;
+  border-radius: 40px;
 }
-.about-text:before {
-  bottom:-12px;
-  right:-12px;
+.about-box:before{
+  background-image: -webkit-gradient(radial, 30% 30%, 0, 30% 30%, 10, from(#ffe5ed), to(#e50044));
+  border-radius: 50%;
+  box-shadow: .5px .5px 4px 1px rgba(128, 128, 128, 0.5);
+  content: '';
+  display: block;
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  width: 15px;
+  height: 15px;
+  z-index: 0;
+}
+.about:after{
+  background-image: linear-gradient(-80deg, transparent 47%, #333333 47%, #333333 52%, transparent 52%, transparent);
+  content: '';
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  width: 10px;
+  height: 13px;
+  z-index: -1;
+}
+.about-box-list, .about-text{
+  margin-top: 50px;
 }
 .about-row{
   margin-top: 50px;
@@ -318,7 +348,6 @@ h2{
   border-radius: 50%;
   padding-right: 5px;
 }
-
 .top-headline h1 {
    margin: 240px 0 200px;
   text-align: center;
@@ -329,7 +358,19 @@ h2{
 }
 footer{
   background-color: #CCCCCC;
-  margin-top: 30px;
+  margin-top: 100px;
+  p{font-family: cursive;
+    font-size: 20px;
+  }
+}
+.foooter-bottom{
+   background-image: image-url('header.jpg');
+   height: 50px;
+   p{
+   color: black;
+   padding-top: 10px;
+   font-size: 20px;
+   }
 }
 
 .field_with_errors {
@@ -340,4 +381,10 @@ footer{
   list-style :none;
 }
 
-
+.user-image-item{
+  width:200px; 
+  height: 200px;
+}
+.user-image{
+  margin-bottom: 20px;
+}

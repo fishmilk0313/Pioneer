@@ -1,0 +1,9 @@
+<div class ="container">
+	<div class ="row">
+		<h1 class ="col-xs-12 text-center">Topics category検索/<smail><%= @topics.count %>件</smail></h1>
+		<div class ="col-xs-10">
+		<%= render 'hosts/topics/topic_index', {topics: @topics } %>
+		</div>
+		 <%= render '/layouts/category_topic', {categories: @categories } %>
+	</div>
+</div>

@@ -11,6 +11,11 @@ class Users::TopicsController < ApplicationController
     @topic = Topic.find(params[:id])
   end
 
+  def contents
+    @topics = Topic.where(Category_id: params[:id])
+    @categories = Category.where(is_active: true)
+  end
+
   private
 
   def set_categories

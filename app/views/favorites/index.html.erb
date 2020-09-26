@@ -1,0 +1,15 @@
+<div class ="container">
+	<div class ="row">
+		<div class ="page-title text-center">
+      <h1> いいねした投稿</h1>
+    </div>
+    <div>
+        <!--　カテゴリーのタグ検索　　-->
+       <%= render 'users/posts/post_index', {posts: @favorite} %>
+     </div>
+     <div class ="col-xs-12 text-center">
+       <%= paginate @favorite %>
+     </div>
+  </div>
+  </div>
+</div>

@@ -1,9 +1,10 @@
  <% posts.each do |post| %>
-        <div class ="post-frame  col-sm-6">
-           <div class ="post-user col-sm-offset-1 col-sm-11">
-         
-           <%= attachment_image_tag post.user, :profile_image, fallback: "no-image.png", style: "width: 50px; height: 50px;",class:"profile-image" %>
-           <%= post.user.name %></br>
+  <div class ="post-frame  col-lg-6 col-xs-12">
+          <div class ="post-user col-sm-offset-1 col-sm-11">
+            <%= link_to users_user_path(post.user) do %>
+              <%= attachment_image_tag post.user, :profile_image, fallback: "no-image.png", style: "width: 50px; height: 50px;",class:"profile-image" %>
+            <% end %>
+              <%= post.user.name %></br>
           </div>
         <% if user_signed_in? %>
           <%= link_to users_post_path(post) do %>
@@ -25,7 +26,7 @@
               <h3><%= post.title %></h3>
             </div>
             <div class ="col-xs-6 text-right">
-              <%= link_to contents_users_post_path(post.category.id) do %>
+              <%= link_to contents_users_post_path (post.category.id) do %>
               <h4><%= post.category.name %></h4>
               <% end %>
             </div>
@@ -39,11 +40,10 @@
                <%= render  'users/posts/favorite', post: post %>
              </div>
              <div class ="col-xs-3 text-right">
-              <i class="far fa-comment"></i>
+              <i class="far fa-comment fa-2x"></i>
                 <%= post.comments.count %>件
             </div>
             <% end %>
-
-        </div>
+          </div>
 <% end %>
 

@@ -3,14 +3,14 @@
     <div class ="page-title text-center">
       <h1> TimeLine</h1>
     </div>
-    <div>
+    <div class="col-xs-10">
         <!--　カテゴリーのタグ検索　　-->
        <%= render 'users/posts/post_index', {posts: @posts} %>
-     </div>
      <div class ="col-xs-12 text-center">
        <%= paginate @posts %>
      </div>
-  </div>
+   </div>
+     <%= render '/layouts/category', {categories: @categories } %>
   </div>
 </div>
 

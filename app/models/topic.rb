@@ -16,7 +16,6 @@ class Topic < ApplicationRecord
 
 
   def self.word_find(find,word)
-     def self.word_find(find,word)
       if find == "forward_match"
         @topic = Topic.where("title LIKE?","#{word}%")
       elsif find == "backward_match"
@@ -26,8 +25,7 @@ class Topic < ApplicationRecord
       elsif find == "partial_match"
          @topic = Topic.where("title LIKE?","%#{word}%")
       else
-         @post = Post.all
+         @topic = Post.all
       end
     end
-  end
 end

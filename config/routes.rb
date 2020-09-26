@@ -29,7 +29,7 @@ Rails.application.routes.draw do
         get :contents
       end
     end
-    resources :posts, only: [:index, :show, :destroy] do 
+    resources :posts, only: [:index, :show, :destroy] do
       member do
         get :contents
       end
@@ -37,7 +37,8 @@ Rails.application.routes.draw do
   end
 
   namespace :users do
-    resources :topics, only: [:index, :show]do
+    resources :categories, only: [:show]
+    resources :topics, only: [:index, :show] do
       member do
         get :contents
       end
@@ -64,9 +65,10 @@ Rails.application.routes.draw do
 
 
   resources :posts, only: [:create, :destroy] do
-    resource :favorites, only: [:create, :destroy]
+    resource :favorites, only: [:create, :destroy, :show]
     resources :comments, only: [:create, :destroy]
   end
+  get 'favorites/index'
 
   scope module: 'users' do
     resources :users, only: [:show, :edit, :update]
