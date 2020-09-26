@@ -17,10 +17,10 @@
           <p><%= @topic[0].created_at.strftime('%Y/%m/%d/%R') %></p>
         </div>
          <div class ="topic-category col-xs-6 text-right">
-              <P><%= @topic[0].category.name %></P>
+              <h4><%= @topic[0].category.name %></h4>
             </div>
         <div class ="new-topic-title col-xs-12 text-center">
-            <h3><%= @topic[0].title %></h3>
+            <h2><%= @topic[0].title %></h2>
         </div>
       </div>
       <% end %>
