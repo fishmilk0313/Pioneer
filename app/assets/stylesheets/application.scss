@@ -27,7 +27,7 @@
 }
 header{
   width: 100%;
-  background-image: image-url('header.jpg');
+  background-image: image-url("header.jpg");
   margin-bottom: 120px;
 }
 .bottan{
@@ -51,7 +51,7 @@ header{
   padding-top: 40px;
 }
 .unlogin{
-  background-image: image-url('body-back.jpg');
+  background-image: image-url("body-back.jpg");
   width: 100%;
   height: 650px;
   background-size: cover;
@@ -133,8 +133,7 @@ h2{
   margin: 0 20px;
 }
 .backimage{
-  background-image: image-url('login-back.jpg');
-
+  background-image: image-url("login-back.jpg");
 }
 .backimage:before{
   background: inherit;
@@ -247,13 +246,13 @@ h2{
    text-align: center;
 }
 .about-headline{
-  background-image: url(about.jpeg);
+  background-image: image-url("about.jpeg");
   background-size: cover;
   background-position: center;
   height : 500px;
   position: relative;
   z-index: 0;
-  overflow: hidden
+  overflow: hidden;
 }
 .about-image{
   border-radius: 50%;
@@ -266,12 +265,13 @@ h2{
   padding: 50px;
   position: relative;
   overflow: hidden;
-  &::before {
+  }
+.about-title-fream:before {
     content: " ";
     display: block;
     width: 100%;
     height: 100%;
-    background: url(about.jpg) no-repeat center center fixed;
+    background: image-url("about.jpg") no-repeat center center fixed;
     background-size: cover;
     position: absolute;
     top: 0;
@@ -279,7 +279,6 @@ h2{
     right: 0;
     bottom: 0;
     filter: blur(10px);
-  }
 }
 .about-title{
   color: #000000;
@@ -359,18 +358,19 @@ h2{
 footer{
   background-color: #CCCCCC;
   margin-top: 100px;
-  p{font-family: cursive;
+}
+footer > p{
+    font-family: cursive;
     font-size: 20px;
-  }
 }
 .foooter-bottom{
    background-image: image-url('header.jpg');
    height: 50px;
-   p{
+}
+.footer-bottom > p{
    color: black;
    padding-top: 10px;
    font-size: 20px;
-   }
 }
 
 .field_with_errors {

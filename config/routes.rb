@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
  
+ root 'homes#top'
   get 'posts/index'
   get 'posts/show'
   get 'posts/destroy'
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   resources :contacts
-  root 'homes#top'
 
   get 'search' => 'searches#find'
 
