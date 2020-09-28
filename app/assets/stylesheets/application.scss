@@ -359,7 +359,7 @@ footer{
   background-color: #CCCCCC;
   margin-top: 100px;
 }
-footer > p{
+footer p{
     font-family: cursive;
     font-size: 20px;
 }
@@ -367,9 +367,9 @@ footer > p{
    background-image: image-url('header.jpg');
    height: 50px;
 }
-.footer-bottom > p{
+.foooter-bottom  p{
    color: black;
-   padding-top: 10px;
+   padding-top: 20px;
    font-size: 20px;
 }
 
@@ -387,4 +387,11 @@ footer > p{
 }
 .user-image{
   margin-bottom: 20px;
+}
+.login-error{
+  width: 100%;
+    border:  solid red;
+    padding: 7px 7px 0;
+    margin-bottom: 20px;
+    background-color: #f0f0f0;
 }

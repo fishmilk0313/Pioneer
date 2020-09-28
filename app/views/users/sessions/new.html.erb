@@ -3,11 +3,14 @@
     <div class ="row login">
       <div class ="login-body col-md-5">
         <h2 class ="login-title">Pioneerログイン</h2>
-        <% flash.each do |name, msg| %>
-    <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
-  <%- end -%> 
-        <i class="fas fa-globe-asia fa-5x"></i>
-        <%= render "users/shared/error_messages", resource: resource %>
+        <% if flash.any? %>
+           <div class ="login-error">
+              <% flash.each do |name, msg| %>
+                <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+              <% end %>
+            </div>
+       <% end %>
+      <i class="fas fa-globe-asia fa-5x"></i>
           <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
             <div class ="field">
               <%= f.label :email %></br>
@@ -17,6 +20,11 @@
             <div class="field">
               <%= f.label :password %></br>
               <%= f.password_field :password, autocomplete: "current-password", size:50 %>
+            </div>
+            <div class="sign-swich">
+              <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+                <%= link_to "=>パスワードを忘れた方はこちら", new_password_path(resource_name) %>
+              <% end %>
             </div>
 
             <div class="actions">

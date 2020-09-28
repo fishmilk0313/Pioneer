@@ -29,6 +29,7 @@ class Users::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
+      flash[:success] = "complete"
       redirect_to users_posts_path
     else
       render :new

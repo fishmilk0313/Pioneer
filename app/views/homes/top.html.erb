@@ -11,7 +11,7 @@
 		<div class ="container">
 			<div class ="row">
 				<div class ="top-new-post">
-					<h2 class ="top text-center">新規足跡</h2>
+					<h1 class ="top text-center">New Footprints</h2>
 						<div class ="top-post-list">
 							<div class ="top-post-item">
 								<%= link_to users_post_path(@post[0]) do %>
@@ -37,7 +37,7 @@
 				</div>
 
 				<div class ="top-topic-page">
-					<h3 class ="top text-center">新規トピック</h3>
+					<h1 class ="top text-center">New Topics</h3>
 						<div class ="top-topic-list">
 							<div class ="top-topic-body">
 								<div class ="top-topic-image">
@@ -113,7 +113,6 @@
 									<h3 class ="text-center"><%= @post[0].title %></h3>
 								<% end %>
 							</div>
-						
 							<div class ="top-post-item">
 								<%= link_to users_post_path(@post[1]) do %>
 									<%= attachment_image_tag(@post[1], :image, fallback: "no-image.png", class: "top-post col-xs-4") %></br>

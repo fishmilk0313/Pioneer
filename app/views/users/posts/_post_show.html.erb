@@ -1,5 +1,7 @@
          	<div class ="post-user col-xs-6">
-        		<%= attachment_image_tag post.user, :profile_image, fallback: "no-image.png", style: "width: 50px; height: 50px;",class:"profile-image" %>
+            <%= link_to users_user_path(post.user) do %>
+        		  <%= attachment_image_tag post.user, :profile_image, fallback: "no-image.png", style: "width: 50px; height: 50px;",class:"profile-image" %>
+            <% end %>
           		<%= @post.user.name %>
          	</div>
             <div class ="col-xs-6 text-right">
