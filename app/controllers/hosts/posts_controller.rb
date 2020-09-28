@@ -2,13 +2,10 @@ class Hosts::PostsController < ApplicationController
   before_action :set_categories, only: [:new, :edit, :index, :create, :update]
   before_action :authenticate_host!
 
-
-
-
   # GET /posts
   # GET /posts.json
   def index
-      @posts = Post.page(params[:page]).per(6)
+    @posts = Post.page(params[:page]).per(6)
   end
 
   # GET /posts/1
@@ -49,29 +46,27 @@ class Hosts::PostsController < ApplicationController
     redirect_to hosts_posts_path
   end
 
-   def self.search(search,word)
-      if search == "forward_match"
-      　　@topic = Topic.where("title LIKE?","#{word}%")
-      elsif search == "backward_match"
-                        　　　@post = Post.where("title LIKE?","%#{word}")
-      elsif search == "perfect_match"
-                        　　　@post = Post.where("#{word}")
-      elsif search == "partial_match"
-                        　　　@post = Post.where("title LIKE?","%#{word}%")
-      else
-                        　　　@post = Post.all
-      end
+  def self.search(search, word)
+    if search == "forward_match"
+      　　 @topic = Topic.where("title LIKE?", "#{word}%")
+    elsif search == "backward_match"
+      　　　@post = Post.where("title LIKE?", "%#{word}")
+    elsif search == "perfect_match"
+      　　　@post = Post.where("#{word}")
+    elsif search == "partial_match"
+      　　　@post = Post.where("title LIKE?", "%#{word}%")
+    else
+      　　　@post = Post.all
     end
-
+   end
 
   private
 
+  def set_categories
+    @categories = Category.where(is_active: true)
+  end
 
-    def set_categories
-      @categories = Category.where(is_active: true)
-    end
-
-    def post_params
-      params.require(:post).permit(:user_id, :category_id, :title, :text, :image)
-    end
+  def post_params
+    params.require(:post).permit(:user_id, :category_id, :title, :text, :image)
+  end
 end

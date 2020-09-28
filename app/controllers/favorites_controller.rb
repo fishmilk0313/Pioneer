@@ -14,7 +14,6 @@ class FavoritesController < ApplicationController
       format.html { redirect_back(fallback_location: root_url) }
       format.js
     end
-
   end
 
   def destroy

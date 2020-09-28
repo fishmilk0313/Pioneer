@@ -7,7 +7,7 @@ class Users::CategoriesController < ApplicationController
     @posts = Post.where(Category_id: params[:id])
     @topics = Topics.where(Category_id: params[:id])
   end
-  
+
   private
 
   # Use callbacks to share common setup or constraints between actions.

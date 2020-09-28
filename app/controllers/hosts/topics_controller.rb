@@ -59,7 +59,7 @@ class Hosts::TopicsController < ApplicationController
   end
 
   def contents
-     @topics = Topic.where(category_id: params[:id],is_active: true)
+    @topics = Topic.where(category_id: params[:id], is_active: true)
   end
 
   private
@@ -74,4 +74,3 @@ class Hosts::TopicsController < ApplicationController
     params.require(:topic).permit(:category_id, :title, :text, :image)
   end
 end
-

@@ -58,14 +58,12 @@ class Users::PostsController < ApplicationController
     redirect_to users_posts_path
   end
 
-
   def contents
     @posts = Post.where(Category_id: params[:id])
     @categories = Category.where(is_active: true)
   end
 
   private
-
 
   def set_categories
     @categories = Category.where(is_active: true)

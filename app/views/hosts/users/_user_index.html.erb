@@ -11,7 +11,7 @@
 		<% users.each do |user| %>
 		<tr>
 			<td>
-				<%= attachment_image_tag user, :profile_image, style: "width:60px; heigth: 60px;", fallback: "no-image.png" %>
+				<%= attachment_image_tag user, :profile_image, style: "width:60px; height: 60px;", fallback: "no-image.png", class: "profile-image" %>
 			</td>
 			<td>
 				<%= link_to  hosts_user_path(user) do %>

@@ -1,17 +1,16 @@
 class Users::UsersController < ApplicationController
   before_action :authenticate_user!
 
-
   def show
     @user = User.find(params[:id])
-    @currentuser_entry=Entry.where(user_id: current_user.id)
-    @user_entry=Entry.where(user_id: @user.id)
+    @currentuser_entry = Entry.where(user_id: current_user.id)
+    @user_entry = Entry.where(user_id: @user.id)
     if @user.id == current_user.id
-      @msg ="他のユーザーとDMしてみよう！"
+      @msg = "他のユーザーとDMしてみよう！"
     else
       @currentuser_entry.each do |cu|
         @user_entry.each do |u|
-          if cu.room_id == u.room_id then
+          if cu.room_id == u.room_id
             @is_room = true
             @room_id = cu.room_id
           end

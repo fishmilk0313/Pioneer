@@ -5,19 +5,19 @@ class CommentsController < ApplicationController
     @comment = @post.comments.build(comment_params)
     @comment.user_id = current_user.id
     if @comment.save
-       flash[:success] = 'コメントしました'
+      flash[:success] = 'コメントしました'
       @post = @comment.post
       @post.create_notification_comment!(current_user, @comment.id)
       render :index
     end
   end
 
- def destroy
+  def destroy
     @post = Post.find(params[:post_id])
     @comment = Comment.find_by(id: params[:id], post_id: params[:post_id])
     @comment.destroy
     render :index
-  end
+   end
 
   private
 

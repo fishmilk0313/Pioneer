@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
- 
- root 'homes#top'
+  root 'homes#top'
   get 'posts/index'
   get 'posts/show'
   get 'posts/destroy'
@@ -24,7 +23,7 @@ Rails.application.routes.draw do
   namespace :hosts do
     resources :categories
     resources :topics
-    resources :users, only: [:index, :show, :edit, :update] do 
+    resources :users, only: [:index, :show, :edit, :update] do
       member do
         get :contents
       end
@@ -43,7 +42,7 @@ Rails.application.routes.draw do
         get :contents
       end
     end
-    resources :posts do 
+    resources :posts do
       member do
         get :contents
       end
@@ -55,14 +54,11 @@ Rails.application.routes.draw do
     end
     resources :relationships, only: [:create, :destroy]
     resources :notifications, only: [:index, :destroy]
-    
-
 
     put "/:id/hide" => "users#hide", as: 'users_hide'
   end
   resources :messages, only: [:create]
   resources :rooms, only: [:create, :show, :index, :destroy]
-
 
   resources :posts, only: [:create, :destroy] do
     resource :favorites, only: [:create, :destroy, :show]
