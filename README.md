@@ -21,28 +21,28 @@ _-旅を身近に-_
 *****
 ## 設計書
 
-###要件定義書  
+### 要件定義書  
 https://www.icloud.com/pages/0_VHTvDbkF04R2TVJ3YUO4jyQ  
 
-###機能一覧  
+### 機能一覧  
 https://www.icloud.com/pages/0GeSSkIq4esUZdhAChEU_C7Vw  
 
-###アプリケーション詳細設計  
+### アプリケーション詳細設計  
 https://www.icloud.com/numbers/0mxgXcRPMkIUna6Iwhco8pfTA  
 
-###テーブル定義書  
+### テーブル定義書  
 https://www.icloud.com/numbers/0_nDral0Wvh7gJnfT946bjgMg#Pioneer  
 
-###ER図  
+### ER図  
 https://drive.google.com/file/d/10T0iyP48bau68awK0_XEMEyEmL4LzkQm/view?usp=sharing  
 
-###ワイヤーフレーム  
-####管理側  
+### ワイヤーフレーム  
+#### 管理側  
 https://drive.google.com/file/d/1NGqSe1phuOhwmkgl0wdSpo2T5gEpTdbF/view?usp=sharing  
-####会員側  
+#### 会員側  
 https://drive.google.com/file/d/15OCkoIPXGik_SAaYJcX6gAe6QPyatwL8/view?usp=sharing  
 
-###_ui flow_  
+### ui flow  
 https://photos.app.goo.gl/4hoyj9EVd6iBkefz6  
 
 
