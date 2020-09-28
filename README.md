@@ -7,7 +7,7 @@
 
 
 ### サイトテーマ
--旅を身近に-
+_-旅を身近に-_
 
 
 ### テーマを選んだ理由
@@ -18,37 +18,37 @@
 
 ### 主な利用シーン
 旅行を計画している段階や、旅行をしている最中。
-
+*****
 ## 設計書
 
-要件定義書
-https://www.icloud.com/pages/0_VHTvDbkF04R2TVJ3YUO4jyQ
+###要件定義書  
+https://www.icloud.com/pages/0_VHTvDbkF04R2TVJ3YUO4jyQ  
 
-機能一覧
-https://www.icloud.com/pages/0GeSSkIq4esUZdhAChEU_C7Vw
+###機能一覧  
+https://www.icloud.com/pages/0GeSSkIq4esUZdhAChEU_C7Vw  
 
-アプリケーション詳細設計
-https://www.icloud.com/numbers/0mxgXcRPMkIUna6Iwhco8pfTA
+###アプリケーション詳細設計  
+https://www.icloud.com/numbers/0mxgXcRPMkIUna6Iwhco8pfTA  
 
-テーブル定義書
-https://www.icloud.com/numbers/0_nDral0Wvh7gJnfT946bjgMg#Pioneer
+###テーブル定義書  
+https://www.icloud.com/numbers/0_nDral0Wvh7gJnfT946bjgMg#Pioneer  
 
-ER図
-https://drive.google.com/file/d/10T0iyP48bau68awK0_XEMEyEmL4LzkQm/view?usp=sharing
+###ER図  
+https://drive.google.com/file/d/10T0iyP48bau68awK0_XEMEyEmL4LzkQm/view?usp=sharing  
 
-ワイヤーフレーム
-管理側
-https://drive.google.com/file/d/1NGqSe1phuOhwmkgl0wdSpo2T5gEpTdbF/view?usp=sharing
-会員側
-https://drive.google.com/file/d/15OCkoIPXGik_SAaYJcX6gAe6QPyatwL8/view?usp=sharing
+###ワイヤーフレーム  
+####管理側  
+https://drive.google.com/file/d/1NGqSe1phuOhwmkgl0wdSpo2T5gEpTdbF/view?usp=sharing  
+####会員側  
+https://drive.google.com/file/d/15OCkoIPXGik_SAaYJcX6gAe6QPyatwL8/view?usp=sharing  
 
-ui flow
-https://photos.app.goo.gl/4hoyj9EVd6iBkefz6
+###_ui flow_  
+https://photos.app.goo.gl/4hoyj9EVd6iBkefz6  
 
 
 ### 機能一覧
 https://docs.google.com/spreadsheets/d/1zFrejo24nhbHBi9ZMaLNZbJMngpXrFbEkwTuU86liDY/edit?usp=sharing
-
+*****
 ## 開発環境
 - OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
