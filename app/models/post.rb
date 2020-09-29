@@ -9,11 +9,11 @@ class Post < ApplicationRecord
 
   validates :title,
             :presence => { :message => "が入力されていません。" },
-            :length => { :maximum => 20, :message => "１０文字以内です。" }
+            :length => { :maximum => 20, :message => "2０文字以内です。" }
 
   validates :text,
             :presence => { :message => "が入力されていません。" },
-            :length => { :maximum => 120, :message => "50文字以内が投稿可能です。" }
+            :length => { :maximum => 120, :message => "120文字以内が投稿可能です。" }
 
   validates :category, :presence => { :message => "を選択してください" }
   validates :image, :presence => { :message => "を選択してください" }
