@@ -5,7 +5,7 @@ class Topic < ApplicationRecord
 
   validates :title,
             :presence => { :message => "が入力されていません。" },
-            :length => { :maximum => 10, :message => "は１０文字以内です。" }
+            :length => { :maximum => 20, :message => "は１０文字以内です。" }
 
   validates :text,
             :presence => { :message => "が入力されていません。" },
