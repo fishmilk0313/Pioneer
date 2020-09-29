@@ -28,8 +28,8 @@
 							</div>
 
 							<div class ="top-post-item">
-								<%= link_to users_post_path(@post[1]) do %>
-									<%= attachment_image_tag(@post[1], :image, fallback: "no-image.png", class: "top-post col-xs-4") %></br>
+								<%= link_to users_post_path(@post[2]) do %>
+									<%= attachment_image_tag(@post[2], :image, fallback: "no-image.png", class: "top-post col-xs-4") %></br>
 									<h3 class ="text-center"><%= @post[1].title %></h3>
 								<% end %>
 							</div>
