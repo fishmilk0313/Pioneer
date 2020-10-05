@@ -3,6 +3,8 @@ class Topic < ApplicationRecord
 
   belongs_to :category
 
+  has_many :tags
+
   validates :title,
             :presence => { :message => "が入力されていません。" },
             :length => { :maximum => 20, :message => "は20文字以内です。" }

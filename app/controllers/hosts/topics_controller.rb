@@ -30,6 +30,10 @@ class Hosts::TopicsController < ApplicationController
   def create
     @topic = Topic.new(topic_params)
     if @topic.save
+      tags = Vision.get_image_data(@topic.image)
+      tags.each do |tag|
+        @topic.tags.create(name: tag)
+      end
       redirect_to hosts_topics_path
     else
       render :new

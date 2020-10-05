@@ -17,6 +17,10 @@
         	<%= @topic.text %>
         </div>
         <div class ="text-right col-xs-12">
+        	 <% @topic.tags.each do |tag| %>
+        <span class="label"><%= tag.name %></span>
+    	</div>
+      <% end %>
         <%= link_to "編集", edit_hosts_topic_path(@topic), class: "btn btn-warning" %>
 		<%= link_to "削除", hosts_topic_path(@topic), method: :delete, class: "btn btn-danger" %>
 	</div>
