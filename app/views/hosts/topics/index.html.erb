@@ -1,37 +1,9 @@
 <div class ="container">
   <div class ="row">
     <div class ="page-title text-center">
-      <h2><storong>Topics</storong>
-        
-      </h2>
+      <h1><storong>Topics</storong>
+      </h1>
     </div>
-
-    <div class ="topic-index  col-lg-offset-2 col-lg-8 col-xs-12">
-      
-      <%=link_to hosts_topic_path(@topic[0]) do %>
-      <div class ="topic-list-body col-xs-12">
-        <div class ="new-topic-image col-xs-12 text-center">
-          <%= attachment_image_tag(@topic[0], :image, class: "big-topic-image") %>
-        </div>
-        <div class ="new-topic-time col-xs-6">
-          <p><%= @topic[0].created_at.strftime('%Y/%m/%d/%R') %></p>
-        </div>
-         <div class ="topic-category col-xs-6 text-right">
-              <h4><%= @topic[0].category.name %></h4>
-            </div>
-        <div class ="new-topic-title col-xs-12 text-center">
-            <h2><%= @topic[0].title %></h2>
-        </div>
-      </div>
-      <% end %>
-       <%= render 'hosts/topics/topic_index', {topics: @topics} %>
-       <%= paginate @topics %>
-     
-       </div>
-      </div>
-  </div>
+<%= render 'hosts/topics/topic_index', {topics: @topics} %>
+ </div>
 </div>
-
-
-
-

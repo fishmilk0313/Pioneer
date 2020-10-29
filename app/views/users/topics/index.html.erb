@@ -2,32 +2,9 @@
   <div class ="row">
     <div class ="page-title text-center">
       <h1><storong>Topics</storong>
-        <!--　カテゴリーのタグ検索　　-->
       </h1>
     </div>
-
-    <div class ="topic-index  col-lg-offset-2 col-lg-8 col-xs-10">
-      <%=link_to users_topic_path(@topic[0]) do %>
-      <div class ="topic-list-body col-xs-12">
-        <div class ="new-topic-image col-xs-12 text-center">
-          <%= attachment_image_tag(@topic[0], :image, class: "big-topic-image") %>
-        </div>
-        <div class ="new-topic-time col-xs-6">
-          <p><%= @topic[0].created_at.strftime('%Y/%m/%d/%R') %></p>
-        </div>
-         <div class ="topic-category col-xs-6 text-right">
-              <h4><%= @topic[0].category.name %></h4>
-            </div>
-        <div class ="new-topic-title col-xs-12 text-center">
-            <h2><%= @topic[0].title %></h2>
-        </div>
-      </div>
-      <% end %>
-       <%= render 'hosts/topics/topic_index', {topics: @topics} %>
-      <div class= "col-xs-12 text-center">
-          <%= paginate @topics %>
-      </div>
-    </div>
+    <%= render 'hosts/topics/topic_index', {topics: @topics} %>
     <%= render '/layouts/category_topic', {categories: @categories } %>
   </div>
 </div>

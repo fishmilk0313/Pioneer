@@ -17,10 +17,12 @@
 		     <!-- コメント入力欄をブログの詳細ページに表示するためのrender -->
 		    	<%= render partial: 'comments/form', locals: { comment: @comment, post: @post } %>
 		  	<% end %>
+		  </div>
+		  <span class="col-xs-offset-3 col-xs-6">
+		  	<h3>コメント一覧</h3>
 		  	<div id="comments_area"><!-- #① -->
 	      <!-- 投稿されたコメント一覧をブログの詳細ページに表示するためのrender -->
 	     		<%= render partial: 'comments/index', locals: { post: @post ,comments: @comment } %>
 	    	</div>
-	    </div>
 	</div>
 </div>

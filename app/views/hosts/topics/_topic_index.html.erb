@@ -1,45 +1,60 @@
+ <div class ="topic-index  col-lg-offset-2 col-lg-8 col-xs-10">
+  <div class ="topic-list-body col-xs-12">
+    <div class ="new-topic-image col-xs-12 text-center">
+      <%= attachment_image_tag(@topic[0], :image, class: "big-topic-image") %>
+    </div>
+    <div class ="new-topic-time col-xs-6">
+      <p><%= @topic[0].created_at.strftime('%Y/%m/%d/%R') %></p>
+    </div>
+    <div class ="topic-category col-xs-6 text-right">
+      <h4><%= @topic[0].category.name %></h4>
+    </div>
+<% if host_signed_in? %>
+  <%=link_to hosts_topic_path(@topic[0]) do %>
+    <div class ="new-topic-title col-xs-12 text-center">
+       <h2><%= @topic[0].title %></h2>
+    </div>
+  <% end %>
+<% else %>
+  <%=link_to users_topic_path(@topic[0]) do %>
+    <div class ="new-topic-title col-xs-12 text-center">
+      <h2><%= @topic[0].title %></h2>
+    </div>
+  <% end %>
+<% end %>
+  </div>
 <div class ="topic-list">
   <% topics.each do |topic| %>
-    <% if host_signed_in? %>
-      <%=link_to hosts_topic_path(topic) do %>
         <div class ="topic-list-body  col-xs-12">
           <div class ="topic-head col-xs-12">
              <div class ="topic-time col-xs-2">
                <p><%= topic.created_at.strftime('%Y/%m/%d/%R') %></p>
              </div>
+
              <div class ="topic-category col-xs-offset-6 col-xs-4 text-right">
                <h4><%= topic.category.name %></h4>
               </div>
           </div>
-
+      <% if host_signed_in? %>
+        <%=link_to hosts_topic_path(topic) do %>
           <div class ="topic-title text-center col-xs-9">
             <h3><%= topic.title %></h3>
           </div>
+        <% end %>
+      <% else %>
+        <%= link_to users_topic_path(topic) do %>
+          <div class ="topic-title text-center col-xs-9">
+            <h3><%= topic.title %></h3>
+          </div>
+        <% end %>
+      <% end %>
           <div class ="topic-image text-right col-xs-3">
             <%= attachment_image_tag(topic, :image, class: "topic-list-image") %>
           </div>
         </div>
       <% end %>
-    <% elsif user_signed_in? %>
-      <%= link_to users_topic_path(topic) do %>
-        <div class ="topic-list-body  col-xs-12">
-          <div class ="topic-head col-xs-12">
-            <div class ="topic-time col-xs-2">
-              <p><%= topic.created_at.strftime('%Y/%m/%d/%R') %></p>
-            </div>
-            <div class ="topic-category col-xs-offset-6 col-xs-4 text-right">
-              <P><%= topic.category.name %></P>
-            </div>
-          </div>
-
-          <div class ="topic-title text-center col-xs-9">
-            <h3><%= topic.title %></h3>
-          </div>
-          <div class ="topic-image text-right col-xs-3">
-            <%= attachment_image_tag(topic, :image, class: "topic-list-image") %>
-          </div>
-        </div>
-      <% end %>
-    <% end %>
-  <% end %>
+</div>
+<div class= "col-xs-12 text-center">
+          <%= paginate @topics %>
+      </div>
 </div>

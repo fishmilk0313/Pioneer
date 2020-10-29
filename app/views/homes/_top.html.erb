@@ -1,0 +1,58 @@
+<div id ="container">
+		<div id="theTarget">
+			<div class ="image1"></div>
+			<div class ="image2"></div>
+			<div class ="image3"></div>
+			<div class ="image4"></div>
+			<div class ="image5"></div>
+		</div>
+	</div>
+		<div class ="container">
+			<div class ="row">
+				<div class ="top-new-post">
+			<h1 class ="top text-center">New Footprints</h1>
+				<div class ="top-post-list">
+					<% @post.each do |post| %>
+						<div class ="top-post-item">
+							<% if user_signed_in? %>
+								<%= link_to users_post_path(post) do %>
+									<%= attachment_image_tag(post, :image, fallback: "no-image.png", class: "top-post col-xs-4") %></br>
+									<h3 class ="text-center"><%= post.title %></h3>
+								<% end %>
+							<% else %>
+								<%= link_to hosts_post_path(post) do %>
+									<%= attachment_image_tag(post, :image, fallback: "no-image.png", class: "top-post col-xs-4") %></br>
+									<h3 class ="text-center"><%= post.title %></h3>
+								<% end %>
+							<% end %>
+						</div>
+					<% end %>
+				</div>
+		</div>
+
+		<div class ="top-topic-page">
+			<h1 class ="top text-center">New Topics</h1>
+				<div class ="top-topic-list">
+					<% topic.each do |topic| %>
+						<div class ="top-topic-body">
+							<div class ="top-topic-image">
+								<% if user_signed_in? %>
+									<%= link_to users_topic_path(topic) do %>
+										<%= attachment_image_tag(topic, :image, fallback: "no-image.png", class: "top-topic col-xs-2") %>
+									<% end %>
+								<% else %>
+									<%= link_to hosts_topic_path(topic) do %>
+										<%= attachment_image_tag(topic, :image, fallback: "no-image.png", class: "top-topic col-xs-2") %>
+									<% end %>
+								<% end %>
+							</div>
+
+							<div class="top-topic-item">
+								<h3><%= topic.title %></h3></br>
+								<P><%= topic.text %></P>
+							</div>
+						</div>
+					<% end %>
+				</div>
+		</div>
+	</div>
